@@ -20,7 +20,7 @@ public interface TbuserMapper {
 
     Set<UserLoginVo> selectByUsername(String username);
 
-    Tbuser loginByUsername(String username);
+    Tbuser getTbuserByUsername(String username);
 
     Set<String> selectRolesByUsername(String username);
 

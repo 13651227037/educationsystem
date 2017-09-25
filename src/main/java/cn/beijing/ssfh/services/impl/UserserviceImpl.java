@@ -1,7 +1,10 @@
 package cn.beijing.ssfh.services.impl;
 
+
+
 import cn.beijing.ssfh.entity.Premissions;
 import cn.beijing.ssfh.entity.Role;
+
 import cn.beijing.ssfh.entity.Tbuser;
 import cn.beijing.ssfh.mapper.TbuserMapper;
 import cn.beijing.ssfh.pojo.vo.UserLoginVo;
@@ -36,7 +39,8 @@ public class UserserviceImpl implements Userservice {
 
     @Override
     public Tbuser loginByUsername(String username) {
-        return tbuserMapper.loginByUsername(username);
+
+        return tbuserMapper.getTbuserByUsername(username);
     }
 
     @Override

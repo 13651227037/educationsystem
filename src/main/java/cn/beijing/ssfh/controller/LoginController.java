@@ -30,11 +30,13 @@ public class LoginController {
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(token);
+
+            subject.getSession().setAttribute("userInfo",userservice.loginByUsername(token.getUsername()));
+
             subject.getSession().setAttribute("userInfo",user);
-//            成功
+
             return "main/main";
         } catch (Exception e) {
-//            失败
             return "login";
         }
     }
@@ -46,14 +48,5 @@ public class LoginController {
         return "omg";
     }
 
-//    @PostMapping(value = "addUser",produces = "application/json;charset=utf-8")
-//    @ResponseBody
-//    public String assUser(Tbuser user) {
-//
-//        if (userservice.insertUser(user)>0) {
-//            return "success";
-//        }else{
-//            return "failed";
-//        }
-//    }
+
 }
