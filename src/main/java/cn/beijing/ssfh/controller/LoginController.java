@@ -30,7 +30,11 @@ public class LoginController {
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(token);
+
             subject.getSession().setAttribute("userInfo",userservice.loginByUsername(token.getUsername()));
+
+            subject.getSession().setAttribute("userInfo",user);
+
             return "main/main";
         } catch (Exception e) {
             return "login";
