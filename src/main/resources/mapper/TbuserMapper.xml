@@ -106,7 +106,7 @@
 AND pre.`permissions_id`=rp.`permissions_id`
 AND tu.`username`=#{username}
   </select>
-  <select id="loginByUsername" parameterType="String" resultType="cn.beijing.ssfh.entity.Tbuser">
+  <select id="getTbuserByUsername" parameterType="String" resultMap="BaseResultMap">
     select * from education_system.tbuser WHERE username=#{username};
   </select>
   <select id="selectRolesByUsername" resultType="String" parameterType="String">
