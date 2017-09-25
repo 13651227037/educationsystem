@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by Mr.W on 2017/9/24.
@@ -29,18 +28,14 @@ public class LoginController {
         String password = user.getPassword();
         UsernamePasswordToken token = new UsernamePasswordToken(username,password);
         Subject subject = SecurityUtils.getSubject();
-
         try {
             subject.login(token);
-            HttpSession session = (HttpSession) SecurityUtils.getSubject().getSession();
-            session.setMaxInactiveInterval(1800000);
-            session.setAttribute("subject",subject);
+            subject.getSession().setAttribute("userInfo",user);
 //            成功
             return "main/main";
         } catch (Exception e) {
 //            失败
             return "login";
-
         }
     }
 

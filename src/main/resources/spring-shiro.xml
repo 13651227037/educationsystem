@@ -14,6 +14,7 @@
 
     <bean class="org.apache.shiro.web.mgt.DefaultWebSecurityManager" id="securityManager">
         <property name="realm" ref="myRealm"/>
+        <property name="cacheManager" ref="ehcacheManager"></property>
     </bean>
 
     <bean class="org.apache.shiro.spring.web.ShiroFilterFactoryBean" id="shiroFilter">
@@ -27,6 +28,10 @@
         </property>
     </bean>
 
+    <bean id="ehcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <!--classpath是缓存属性的配置文件  -->
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
+    </bean>
 
     <bean class="org.apache.shiro.spring.LifecycleBeanPostProcessor" id="lifecycleBeanPostProcessor"></bean>
 
