@@ -1,7 +1,7 @@
 package cn.beijing.ssfh.realm;
 
 import cn.beijing.ssfh.entity.Tbuser;
-import cn.beijing.ssfh.services.Userservice;
+import cn.beijing.ssfh.services.public_department.public_managerment.Userservice;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;

@@ -38,7 +38,7 @@
     delete from user_info
     where user_info_id = #{userInfoId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.beijing.ssfh.entity.UserInfo" >
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.UserInfo" useGeneratedKeys="true" keyProperty="userInfoId">
     insert into user_info (user_info_id, address_id, name, 
       employee_num, gender, native_place, 
       home_address, telephone, email, 
@@ -56,7 +56,7 @@
       #{homeAddressCode,jdbcType=VARCHAR}, #{householdRegistrationCode,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.UserInfo" >
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.UserInfo" useGeneratedKeys="true" keyProperty="userInfoId">
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userInfoId != null" >

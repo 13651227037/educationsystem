@@ -1,7 +1,7 @@
-package cn.beijing.ssfh.controller;
+package cn.beijing.ssfh.controller.public_department.public_managerment;
 
 import cn.beijing.ssfh.entity.Tbuser;
-import cn.beijing.ssfh.services.Userservice;
+import cn.beijing.ssfh.services.public_department.public_managerment.Userservice;
 import cn.beijing.ssfh.util.Message;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
