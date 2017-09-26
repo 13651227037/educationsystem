@@ -1,7 +1,9 @@
 package cn.beijing.ssfh.services.public_department.public_managerment;
 
+import cn.beijing.ssfh.entity.DepartmentalRole;
 import cn.beijing.ssfh.entity.Tbuser;
 import cn.beijing.ssfh.entity.UserInfo;
+import cn.beijing.ssfh.entity.UserRole;
 import cn.beijing.ssfh.pojo.vo.UserLoginVo;
 
 import java.util.Set;
@@ -19,6 +21,6 @@ public interface Userservice {
 
     Set<UserLoginVo> selectByUsername(String username);
 
-    int addTbuser(Tbuser tbuser, UserInfo userInfo);
+    int addTbuser(Tbuser tbuser, UserInfo userInfo,UserRole userRole,DepartmentalRole departmentalRole);
 
 }
