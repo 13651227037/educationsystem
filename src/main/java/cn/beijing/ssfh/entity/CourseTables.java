@@ -11,6 +11,10 @@ public class CourseTables {
 
     private Integer dateTimeId;
 
+    private String teacherName;
+
+    private String chapterName;
+
     public Integer getCourseTablesId() {
         return courseTablesId;
     }
@@ -49,5 +53,21 @@ public class CourseTables {
 
     public void setDateTimeId(Integer dateTimeId) {
         this.dateTimeId = dateTimeId;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName == null ? null : teacherName.trim();
+    }
+
+    public String getChapterName() {
+        return chapterName;
+    }
+
+    public void setChapterName(String chapterName) {
+        this.chapterName = chapterName == null ? null : chapterName.trim();
     }
 }

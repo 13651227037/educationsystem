@@ -3,13 +3,13 @@ package cn.beijing.ssfh.mapper;
 import cn.beijing.ssfh.entity.TestScore;
 
 public interface TestScoreMapper {
-    int deleteByPrimaryKey(Integer testCodeId);
+    int deleteByPrimaryKey(Integer testScoreId);
 
     int insert(TestScore record);
 
     int insertSelective(TestScore record);
 
-    TestScore selectByPrimaryKey(Integer testCodeId);
+    TestScore selectByPrimaryKey(Integer testScoreId);
 
     int updateByPrimaryKeySelective(TestScore record);
 

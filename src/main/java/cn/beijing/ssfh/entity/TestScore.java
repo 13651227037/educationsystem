@@ -3,7 +3,7 @@ package cn.beijing.ssfh.entity;
 import java.util.Date;
 
 public class TestScore {
-    private Integer testCodeId;
+    private Integer testScoreId;
 
     private Integer testPaperId;
 
@@ -13,12 +13,14 @@ public class TestScore {
 
     private Date testTime;
 
-    public Integer getTestCodeId() {
-        return testCodeId;
+    private Integer testInformationId;
+
+    public Integer getTestScoreId() {
+        return testScoreId;
     }
 
-    public void setTestCodeId(Integer testCodeId) {
-        this.testCodeId = testCodeId;
+    public void setTestScoreId(Integer testScoreId) {
+        this.testScoreId = testScoreId;
     }
 
     public Integer getTestPaperId() {
@@ -51,5 +53,13 @@ public class TestScore {
 
     public void setTestTime(Date testTime) {
         this.testTime = testTime;
+    }
+
+    public Integer getTestInformationId() {
+        return testInformationId;
+    }
+
+    public void setTestInformationId(Integer testInformationId) {
+        this.testInformationId = testInformationId;
     }
 }

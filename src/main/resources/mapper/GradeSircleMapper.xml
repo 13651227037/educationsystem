@@ -6,9 +6,10 @@
     <result column="week_id" property="weekId" jdbcType="INTEGER" />
     <result column="sircle_time_part_id" property="sircleTimePartId" jdbcType="INTEGER" />
     <result column="grade_id" property="gradeId" jdbcType="INTEGER" />
+    <result column="classroom_id" property="classroomId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    grade_sircle_id, week_id, sircle_time_part_id, grade_id
+    grade_sircle_id, week_id, sircle_time_part_id, grade_id, classroom_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,9 +23,9 @@
   </delete>
   <insert id="insert" parameterType="cn.beijing.ssfh.entity.GradeSircle" >
     insert into grade_sircle (grade_sircle_id, week_id, sircle_time_part_id, 
-      grade_id)
+      grade_id, classroom_id)
     values (#{gradeSircleId,jdbcType=INTEGER}, #{weekId,jdbcType=INTEGER}, #{sircleTimePartId,jdbcType=INTEGER}, 
-      #{gradeId,jdbcType=INTEGER})
+      #{gradeId,jdbcType=INTEGER}, #{classroomId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.GradeSircle" >
     insert into grade_sircle
@@ -41,6 +42,9 @@
       <if test="gradeId != null" >
         grade_id,
       </if>
+      <if test="classroomId != null" >
+        classroom_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="gradeSircleId != null" >
@@ -54,6 +58,9 @@
       </if>
       <if test="gradeId != null" >
         #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="classroomId != null" >
+        #{classroomId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -69,6 +76,9 @@
       <if test="gradeId != null" >
         grade_id = #{gradeId,jdbcType=INTEGER},
       </if>
+      <if test="classroomId != null" >
+        classroom_id = #{classroomId,jdbcType=INTEGER},
+      </if>
     </set>
     where grade_sircle_id = #{gradeSircleId,jdbcType=INTEGER}
   </update>
@@ -76,7 +86,8 @@
     update grade_sircle
     set week_id = #{weekId,jdbcType=INTEGER},
       sircle_time_part_id = #{sircleTimePartId,jdbcType=INTEGER},
-      grade_id = #{gradeId,jdbcType=INTEGER}
+      grade_id = #{gradeId,jdbcType=INTEGER},
+      classroom_id = #{classroomId,jdbcType=INTEGER}
     where grade_sircle_id = #{gradeSircleId,jdbcType=INTEGER}
   </update>
 </mapper>

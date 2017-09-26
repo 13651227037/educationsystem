@@ -100,7 +100,7 @@
         </aop:aspect>
     </aop:config>
     <aop:config>
-        <aop:pointcut id="pointcut" expression="execution(* cn.beijing.ssfh.services.*.*(..))"></aop:pointcut>
+        <aop:pointcut id="pointcut" expression="execution(* cn.beijing.ssfh.services.impl.*.*(..))"></aop:pointcut>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
     </aop:config>
 

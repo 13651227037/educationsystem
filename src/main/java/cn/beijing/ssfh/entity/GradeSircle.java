@@ -9,6 +9,8 @@ public class GradeSircle {
 
     private Integer gradeId;
 
+    private Integer classroomId;
+
     public Integer getGradeSircleId() {
         return gradeSircleId;
     }
@@ -39,5 +41,13 @@ public class GradeSircle {
 
     public void setGradeId(Integer gradeId) {
         this.gradeId = gradeId;
+    }
+
+    public Integer getClassroomId() {
+        return classroomId;
+    }
+
+    public void setClassroomId(Integer classroomId) {
+        this.classroomId = classroomId;
     }
 }
