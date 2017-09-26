@@ -42,6 +42,12 @@ public class Message {
         msg.setMsg("登陆失败！");
         return msg;
     }
+    public static Message loginout() {
+        Message msg = new Message();
+        msg.setCode("0005");
+        msg.setMsg("退出成功！");
+        return msg;
+    }
 
     public String getCode() {
         return code;
@@ -58,4 +64,6 @@ public class Message {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+
 }

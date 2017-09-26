@@ -20,11 +20,14 @@
         </td>
       </tr>
       <tr>
-        <td>
-          <input type="submit" value="王大仙">
-        </td>
+
         <td>
           <input type="text" name="password">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit" value="王大仙">
         </td>
       </tr>
     </table>

@@ -9,6 +9,7 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,12 +63,19 @@ public class LoginController {
         }
 
     }
-
+    //权限验证，是否具有add方法
     @RequiresPermissions("add")
     @PostMapping(value = "testPremission")
     public String doTestPremission() {
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        Session session = (Session) subject.getSession().getAttribute("userInfo");
         return "omg";
     }
-
-
+    //退出登录
+    @PostMapping(value = "loginout")
+    public String loginout(Model model) {
+        model.addAttribute(Message.loginout());
+        return "login";
+    }
 }

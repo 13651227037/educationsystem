@@ -12,11 +12,15 @@ import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
 public class CustomCredentialMatcher extends SimpleCredentialsMatcher {
     @Override
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
-
+        //获取用户凭证
         UsernamePasswordToken usernamePasswordToken  = (UsernamePasswordToken)token;
+        //获取用户密码
         String password = String.valueOf(usernamePasswordToken.getPassword());
+        //用户密码加密
         String encryptPassword = Md5Utils.encryptPassword(password);
+        //从用户信息中取到用户密码（数据库中的）
         Object credentials = info.getCredentials();
+        //用户密码对比
         return (credentials.equals(encryptPassword));
     }
 }
