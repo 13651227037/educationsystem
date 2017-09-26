@@ -1,6 +1,7 @@
-package cn.beijing.ssfh.services;
+package cn.beijing.ssfh.services.public_department.public_managerment;
 
 import cn.beijing.ssfh.entity.Tbuser;
+import cn.beijing.ssfh.entity.UserInfo;
 import cn.beijing.ssfh.pojo.vo.UserLoginVo;
 
 import java.util.Set;
@@ -15,6 +16,9 @@ public interface Userservice {
     Set<String> getPremissionsByUsername(String username);
 
     Tbuser loginByUsername(String username);
+
     Set<UserLoginVo> selectByUsername(String username);
+
+    int addTbuser(Tbuser tbuser, UserInfo userInfo);
 
 }

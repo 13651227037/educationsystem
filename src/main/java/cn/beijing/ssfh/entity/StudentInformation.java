@@ -47,6 +47,8 @@ public class StudentInformation {
 
     private String householdRegistrationCode;
 
+    private Integer studentState;
+
     public Integer getStudentId() {
         return studentId;
     }
@@ -221,5 +223,13 @@ public class StudentInformation {
 
     public void setHouseholdRegistrationCode(String householdRegistrationCode) {
         this.householdRegistrationCode = householdRegistrationCode == null ? null : householdRegistrationCode.trim();
+    }
+
+    public Integer getStudentState() {
+        return studentState;
+    }
+
+    public void setStudentState(Integer studentState) {
+        this.studentState = studentState;
     }
 }

@@ -4,9 +4,10 @@
   <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.DateTime" >
     <id column="date_time_id" property="dateTimeId" jdbcType="INTEGER" />
     <result column="date_time" property="dateTime" jdbcType="DATE" />
+    <result column="date_state" property="dateState" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    date_time_id, date_time
+    date_time_id, date_time, date_state
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,8 +20,10 @@
     where date_time_id = #{dateTimeId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.beijing.ssfh.entity.DateTime" >
-    insert into date_time (date_time_id, date_time)
-    values (#{dateTimeId,jdbcType=INTEGER}, #{dateTime,jdbcType=DATE})
+    insert into date_time (date_time_id, date_time, date_state
+      )
+    values (#{dateTimeId,jdbcType=INTEGER}, #{dateTime,jdbcType=DATE}, #{dateState,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.DateTime" >
     insert into date_time
@@ -31,6 +34,9 @@
       <if test="dateTime != null" >
         date_time,
       </if>
+      <if test="dateState != null" >
+        date_state,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="dateTimeId != null" >
@@ -38,6 +44,9 @@
       </if>
       <if test="dateTime != null" >
         #{dateTime,jdbcType=DATE},
+      </if>
+      <if test="dateState != null" >
+        #{dateState,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -47,12 +56,16 @@
       <if test="dateTime != null" >
         date_time = #{dateTime,jdbcType=DATE},
       </if>
+      <if test="dateState != null" >
+        date_state = #{dateState,jdbcType=INTEGER},
+      </if>
     </set>
     where date_time_id = #{dateTimeId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.DateTime" >
     update date_time
-    set date_time = #{dateTime,jdbcType=DATE}
+    set date_time = #{dateTime,jdbcType=DATE},
+      date_state = #{dateState,jdbcType=INTEGER}
     where date_time_id = #{dateTimeId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -5,6 +5,8 @@ public class Role {
 
     private String roleName;
 
+    private Integer parentId;
+
     public Integer getRoleId() {
         return roleId;
     }
@@ -19,5 +21,13 @@ public class Role {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName == null ? null : roleName.trim();
+    }
+
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 }
