@@ -16,6 +16,5 @@ public class LoginTest extends BaseTest {
         Tbuser tbuser = new Tbuser();
         tbuser.setUsername("admin");
         tbuser.setPassword("1234");
-        System.out.println(loginServices.login(tbuser));
     }
 }

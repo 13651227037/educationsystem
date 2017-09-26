@@ -32,7 +32,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="cn.beijing.ssfh.entity"/>
         <property name="mapperLocations" value="classpath*:/mapper/*.xml"/>
-
+        <property name="typeHandlersPackage" value="cn.beijing.ssfh.pojo.*"/>
         <!-- mybatis配置文件 -->
         <property name="configLocation" value="classpath:mybatisconfig.xml"></property>
     </bean>

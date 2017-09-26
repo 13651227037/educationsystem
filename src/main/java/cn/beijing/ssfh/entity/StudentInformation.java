@@ -1,5 +1,7 @@
 package cn.beijing.ssfh.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class StudentInformation {
@@ -105,6 +107,7 @@ public class StudentInformation {
      *
      * @mbggenerated
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
 
     /**
@@ -137,6 +140,7 @@ public class StudentInformation {
      *
      * @mbggenerated
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date graduationDate;
 
     /**
@@ -705,5 +709,33 @@ public class StudentInformation {
      */
     public void setHouseholdRegistrationCode(String householdRegistrationCode) {
         this.householdRegistrationCode = householdRegistrationCode == null ? null : householdRegistrationCode.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "StudentInformation{" +
+                "studentId=" + studentId +
+                ", addressId=" + addressId +
+                ", studentName='" + studentName + '\'' +
+                ", studentNum='" + studentNum + '\'' +
+                ", gender=" + gender +
+                ", nativePlace='" + nativePlace + '\'' +
+                ", homeAddress='" + homeAddress + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", email='" + email + '\'' +
+                ", documentType=" + documentType +
+                ", documentNumber='" + documentNumber + '\'' +
+                ", nation='" + nation + '\'' +
+                ", birthDate=" + birthDate +
+                ", age=" + age +
+                ", education='" + education + '\'' +
+                ", profession='" + profession + '\'' +
+                ", graduationDate=" + graduationDate +
+                ", parentsName='" + parentsName + '\'' +
+                ", parentsTel='" + parentsTel + '\'' +
+                ", emergencyContact='" + emergencyContact + '\'' +
+                ", emergencyContactTel='" + emergencyContactTel + '\'' +
+                ", householdRegistrationCode='" + householdRegistrationCode + '\'' +
+                '}';
     }
 }
