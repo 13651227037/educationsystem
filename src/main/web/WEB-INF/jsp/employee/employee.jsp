@@ -41,37 +41,8 @@
                         handler:function () {
                             $("#addHobbyWindow").window("open");
                         }
-                    },
-                    {
-                        text:'删除',
-                        iconCls:"icon-remove",
-                        handler:function () {
-                            //1. 获取选中项
-                            var checkedItems=$("#hobbyDataGride").datagrid('getChecked');
-                            //2. 选中项非空校验
-                            if(null==checkedItems||checkedItems.length<=0){
-                                alert("请选择要删除的爱好");
-                                return;
-                            }
-                            //3. 提示是否删除
-                            if(confirm("确定要删除吗？")){
-                                //4. 组装json
-                                var idArray=[];
-                                $.each(checkedItems,function (index,item) {
-                                    idArray.push(item.id);
-                                });
-                                var idListJson=JSON.stringify(idArray);
-
-                                //5. ajax调用后台
-                                $.post("${pageContext.request.contextPath}/hobby/deleteHobbyByIdList.controller",
-                                    {"idList":idListJson},function (result) {
-                                        alert(result.msg);
-                                        $("#hobbyDataGride").datagrid("reload");
-                                    });
-                            }
-
-                        }
                     }
+
                 ],
                 onLoadSuccess:function () {
                     $(".button_view").linkbutton();
@@ -83,6 +54,8 @@
                 return row.role.roleName;
             } function teacherNameFormatter(value,row) {
                 return row.teacher.teacherName;
+            }function employeeNumFormatter(value,row) {
+                return row.userInfo.employeeNum;
             }function genderFormatter(value,row) {
                 var sex=row.userInfo.gender;
                 var gender = '';
@@ -105,8 +78,7 @@
                 var userid=row.tbuser.tbuserId;
                 var detailEmployeeInfoButton="<button onclick='detailEmployeeInfo("+userid+")'>详情</button>";
                 var updateEmployeeInfoButton="<button onclick='updateEmployeeInfo("+userid+")'>修改</button>";
-                var deleteEmployeeInfoButton="<button onclick='deleteEmployeeInfo("+userid+")'>删除</button>";
-                return detailEmployeeInfoButton+" "+updateEmployeeInfoButton+" "+deleteEmployeeInfoButton;
+                return detailEmployeeInfoButton+"     "+updateEmployeeInfoButton;
             }
             
         })
@@ -130,7 +102,6 @@
                     $("#detailEmergencyContactPhone").textbox('setValue',result.userInfo.emergencyContactPhone);
                     $("#detailHomeAddressCode").textbox('setValue',result.userInfo.homeAddressCode);
                     $("#detailHouseholdRegistrationCode").textbox('setValue',result.userInfo.householdRegistrationCode);
-                    $("#").textbox('setValue',result.userInfo);
                 })
             $("#queryEmployeeInfoWindow").window("open");
 
@@ -140,9 +111,7 @@
             alert("修改");
 
         }
-        function deleteEmployeeInfo() {
-            alert("删除");
-        }
+
 
 
     </script>
@@ -174,7 +143,7 @@
     </form>
 </div>
 <%--个人信息详情window--%>
-<div id="queryEmployeeInfoWindow" class="easyui-window" style="left: 10% ;top: 0% ;width: 450px; height: 350px; padding:20px 30px" closed="true">
+<div id="queryEmployeeInfoWindow" modal="true" class="easyui-window" style="left: 15% ;top: 0% ;width: 450px; height: 350px; padding:20px 30px" closed="true">
     <form id="queryEmployeeInfoForm">
         <table>
             <tr>

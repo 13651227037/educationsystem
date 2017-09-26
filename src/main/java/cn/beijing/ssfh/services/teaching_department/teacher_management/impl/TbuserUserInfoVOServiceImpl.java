@@ -1,6 +1,7 @@
 package cn.beijing.ssfh.services.teaching_department.teacher_management.impl;
 
-import cn.beijing.ssfh.mapper.TbuserUserInfoVOMapper;
+import cn.beijing.ssfh.entity.Tbuser;
+import cn.beijing.ssfh.mapper.*;
 import cn.beijing.ssfh.pojo.vo.TbuserUserInfoVO;
 import cn.beijing.ssfh.services.teaching_department.teacher_management.TbuserUserInfoVOService;
 import cn.beijing.ssfh.util.PageUtil;
@@ -19,6 +20,19 @@ import java.util.List;
 public class TbuserUserInfoVOServiceImpl implements TbuserUserInfoVOService {
     @Inject
     private TbuserUserInfoVOMapper tbuserUserInfoVOMapper;
+    @Inject
+    private TbuserMapper tbuserMapper;
+    @Inject
+    private TeacherMapper teacherMapper;
+    @Inject
+    private StateMapper stateMapper;
+    @Inject
+    private UserRoleMapper userRoleMapper;
+    @Inject
+    private RoleMapper roleMapper;
+    @Inject
+    private UserInfoMapper userInfoMapper;
+
     @Override
     public TbuserUserInfoVO findTbuserVOByTbuserId(Integer userId) {
         return tbuserUserInfoVOMapper.findTbuserVOByTbuserId(userId);
@@ -31,4 +45,11 @@ public class TbuserUserInfoVOServiceImpl implements TbuserUserInfoVOService {
         PageInfo<TbuserUserInfoVO> pageInfo = new PageInfo<>(list);
         return new PageUtil<>(pageInfo);
     }
+
+    @Override
+    public Integer updateByPrimaryKeySelective(Tbuser record) {
+        return tbuserMapper.updateByPrimaryKeySelective(record);
+    }
+
+
 }
