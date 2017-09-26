@@ -20,6 +20,7 @@
     </context:component-scan>
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
+
     <context:property-placeholder location="classpath*:jdbc.properties"></context:property-placeholder>
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="jdbcUrl" value="${jdbc.url}"/>
@@ -82,6 +83,22 @@
             <tx:method name="*" propagation="REQUIRED" read-only="true" />
         </tx:attributes>
     </tx:advice>
+    <bean id="securityHandler" class="cn.beijing.ssfh.aop.printinfo.SecurityHandler" />
+    <aop:config>
+        <aop:aspect id="securityAspect" ref="securityHandler">
+            <!-- <aop:pointcut id="addAddMethod" expression="execution(* add*(..))"/> -->
+
+            <!-- 操作日志的处理 -->
+            <aop:pointcut id="addAddMethod" expression="execution(* cn.beijing.ssfh.services.impl.*.add*(..)) ||execution(* cn.beijing.ssfh.services.impl.*.update*(..)) ||execution(* cn.beijing.ssfh.services.impl.*.delete*(..))"/>
+            <aop:before method="checkSecurity" pointcut-ref="addAddMethod"/>
+            <aop:after method="checkSecurity" pointcut-ref="addAddMethod"/>
+
+            <!-- 异常日志的处理 -->
+            <!-- <aop:pointcut id="after异常增强" expression="execution(* com.tgb.spring.*.*(..)) || args(name)"/> -->
+            <aop:after-throwing method="doThrowing" pointcut="execution(* cn.beijing.ssfh.services.*.*.*(..))" throwing="ex"/>
+
+        </aop:aspect>
+    </aop:config>
     <aop:config>
         <aop:pointcut id="pointcut" expression="execution(* cn.beijing.ssfh.services.*.*(..))"></aop:pointcut>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
