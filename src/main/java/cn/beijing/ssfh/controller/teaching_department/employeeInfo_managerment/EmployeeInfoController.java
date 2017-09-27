@@ -3,7 +3,6 @@ package cn.beijing.ssfh.controller;
 import cn.beijing.ssfh.entity.Tbuser;
 import cn.beijing.ssfh.pojo.vo.TbuserUserInfoVO;
 import cn.beijing.ssfh.services.teaching_department.teacher_management.TbuserUserInfoVOService;
-import cn.beijing.ssfh.util.Mesage;
 import cn.beijing.ssfh.util.PageUtil;
 import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
@@ -58,6 +57,7 @@ public class EmployeeInfoController {
             "application/json;charset=utf-8")
     @ResponseBody
     public String updatePasswordByUserId(Tbuser tbuser) {
+        
         return JSON.toJSONString(Mesage.base(voService.updateByPrimaryKeySelective(tbuser)));
     }
 }

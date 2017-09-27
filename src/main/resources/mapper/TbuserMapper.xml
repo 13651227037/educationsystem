@@ -39,7 +39,7 @@
     delete from tbuser
     where tbuser_id = #{tbuserId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.beijing.ssfh.entity.Tbuser" >
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.Tbuser" useGeneratedKeys="true" keyProperty="tbuserId">
     insert into tbuser (tbuser_id, user_info_id, username, 
       password)
     values (#{tbuserId,jdbcType=INTEGER}, #{userInfoId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 

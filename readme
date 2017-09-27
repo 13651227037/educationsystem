@@ -4,7 +4,7 @@
     1.标识符用英文的驼峰命名法（所有命名使用英文，不会的有道词典）
     2.数组命名 如  int[] a={};
     3.常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长
-    4.抽象类命名使用 Abstract
+    4.抽象类命名使用 Abstract开始
     5.Boolean命名不要使用is前缀
     6.接口不要加public等修饰符，但一定要加上注释
     7.A) Service/DAO 层方法命名规约
@@ -14,6 +14,8 @@
          4） 插入的方法用 save（推荐）或 insert 做前缀。
          5） 删除的方法用 remove（推荐）或 delete 做前缀。
          6） 修改的方法用 update 做前缀
+         7)  方法返回类型使用包装类，Integer 等 不使用int double
+         8)  controller方法以to/do开头，services中间，之后跟目的等
     8.VO类命名：xxxVO
     9.任何运算符左右必须加一个空格
     10.大括号的使用约定。如果是大括号内为空，则简洁地写成{}即可，不需要换行；如果 是非空代码块则：
@@ -104,7 +106,6 @@
     35 tbuser 用户表
     36 teacher  老师表
     37 teacher_course  教师课程关系表
-    38 teacher_state  教师状态表
     39 teaching_plan 教案表
     40 test_paper  试卷表
     41 test_score  成绩表
