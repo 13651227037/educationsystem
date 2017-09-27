@@ -4,9 +4,10 @@
   <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.Menu" >
     <id column="menu_id" property="menuId" jdbcType="INTEGER" />
     <result column="url_address" property="urlAddress" jdbcType="VARCHAR" />
+    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    menu_id, url_address
+    menu_id, url_address, menu_name
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,8 +20,10 @@
     where menu_id = #{menuId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.beijing.ssfh.entity.Menu" >
-    insert into menu (menu_id, url_address)
-    values (#{menuId,jdbcType=INTEGER}, #{urlAddress,jdbcType=VARCHAR})
+    insert into menu (menu_id, url_address, menu_name
+      )
+    values (#{menuId,jdbcType=INTEGER}, #{urlAddress,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.Menu" >
     insert into menu
@@ -31,6 +34,9 @@
       <if test="urlAddress != null" >
         url_address,
       </if>
+      <if test="menuName != null" >
+        menu_name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="menuId != null" >
@@ -38,6 +44,9 @@
       </if>
       <if test="urlAddress != null" >
         #{urlAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -47,12 +56,16 @@
       <if test="urlAddress != null" >
         url_address = #{urlAddress,jdbcType=VARCHAR},
       </if>
+      <if test="menuName != null" >
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
     </set>
     where menu_id = #{menuId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.Menu" >
     update menu
-    set url_address = #{urlAddress,jdbcType=VARCHAR}
+    set url_address = #{urlAddress,jdbcType=VARCHAR},
+      menu_name = #{menuName,jdbcType=VARCHAR}
     where menu_id = #{menuId,jdbcType=INTEGER}
   </update>
 </mapper>

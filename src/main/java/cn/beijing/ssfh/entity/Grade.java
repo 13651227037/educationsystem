@@ -17,6 +17,8 @@ public class Grade {
 
     private Date startTime;
 
+    private Integer classroomId;
+
     public Integer getGradeId() {
         return gradeId;
     }
@@ -71,5 +73,13 @@ public class Grade {
 
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
+    }
+
+    public Integer getClassroomId() {
+        return classroomId;
+    }
+
+    public void setClassroomId(Integer classroomId) {
+        this.classroomId = classroomId;
     }
 }

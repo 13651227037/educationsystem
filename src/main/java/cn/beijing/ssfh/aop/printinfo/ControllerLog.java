@@ -22,4 +22,6 @@ public class ControllerLog {
         logger.info("调用："+jp.getTarget()+"的"+jp.getSignature().getName()+"方法："+
                 "方法返回值："+result);
     }
+
+
 }

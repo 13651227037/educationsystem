@@ -7,9 +7,12 @@
     <result column="classroom_id" property="classroomId" jdbcType="INTEGER" />
     <result column="grade_id" property="gradeId" jdbcType="INTEGER" />
     <result column="date_time_id" property="dateTimeId" jdbcType="INTEGER" />
+    <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
+    <result column="chapter_name" property="chapterName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    course_tables_id, day_time_id, classroom_id, grade_id, date_time_id
+    course_tables_id, day_time_id, classroom_id, grade_id, date_time_id, teacher_name, 
+    chapter_name
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,9 +26,11 @@
   </delete>
   <insert id="insert" parameterType="cn.beijing.ssfh.entity.CourseTables" >
     insert into course_tables (course_tables_id, day_time_id, classroom_id, 
-      grade_id, date_time_id)
+      grade_id, date_time_id, teacher_name, 
+      chapter_name)
     values (#{courseTablesId,jdbcType=INTEGER}, #{dayTimeId,jdbcType=INTEGER}, #{classroomId,jdbcType=INTEGER}, 
-      #{gradeId,jdbcType=INTEGER}, #{dateTimeId,jdbcType=INTEGER})
+      #{gradeId,jdbcType=INTEGER}, #{dateTimeId,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}, 
+      #{chapterName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.CourseTables" >
     insert into course_tables
@@ -45,6 +50,12 @@
       <if test="dateTimeId != null" >
         date_time_id,
       </if>
+      <if test="teacherName != null" >
+        teacher_name,
+      </if>
+      <if test="chapterName != null" >
+        chapter_name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="courseTablesId != null" >
@@ -61,6 +72,12 @@
       </if>
       <if test="dateTimeId != null" >
         #{dateTimeId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null" >
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterName != null" >
+        #{chapterName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -79,6 +96,12 @@
       <if test="dateTimeId != null" >
         date_time_id = #{dateTimeId,jdbcType=INTEGER},
       </if>
+      <if test="teacherName != null" >
+        teacher_name = #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterName != null" >
+        chapter_name = #{chapterName,jdbcType=VARCHAR},
+      </if>
     </set>
     where course_tables_id = #{courseTablesId,jdbcType=INTEGER}
   </update>
@@ -87,7 +110,9 @@
     set day_time_id = #{dayTimeId,jdbcType=INTEGER},
       classroom_id = #{classroomId,jdbcType=INTEGER},
       grade_id = #{gradeId,jdbcType=INTEGER},
-      date_time_id = #{dateTimeId,jdbcType=INTEGER}
+      date_time_id = #{dateTimeId,jdbcType=INTEGER},
+      teacher_name = #{teacherName,jdbcType=VARCHAR},
+      chapter_name = #{chapterName,jdbcType=VARCHAR}
     where course_tables_id = #{courseTablesId,jdbcType=INTEGER}
   </update>
 </mapper>

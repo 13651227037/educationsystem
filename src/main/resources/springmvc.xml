@@ -40,7 +40,7 @@
     </bean>
     <bean id="mylog" class="cn.beijing.ssfh.aop.printinfo.ControllerLog"/>
     <aop:config>
-        <aop:pointcut id="pointcut" expression="execution(* cn.beijing.ssfh.controller.*.*(..))"/>
+        <aop:pointcut id="pointcut" expression="execution(* cn.beijing.ssfh.controller.*.*.*.*.*(..))"/>
         <aop:aspect ref="mylog">
             <aop:before method="before" pointcut-ref="pointcut"></aop:before>
             <aop:after-returning method="after" pointcut-ref="pointcut" returning="result"></aop:after-returning>

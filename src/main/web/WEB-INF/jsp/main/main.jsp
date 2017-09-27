@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: thinkpad
@@ -83,5 +84,14 @@
              </div>
         </div>
     </div>
+  <form action="${pageContext.request.contextPath}/login/testPremission.controller" method="post">
+                <button type="submit" id="testButton">测试权限</button>
+
+            </form>
 </body>
+
 </html>
+
+            
+    
+ 
