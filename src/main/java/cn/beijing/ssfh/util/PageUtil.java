@@ -45,7 +45,5 @@ public class PageUtil<T> {
         this.rows = rows;
     }
 
-    public PageUtil() {
-
-    }
+   
 }
