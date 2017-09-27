@@ -25,7 +25,14 @@ public class AddUserTest extends BaseTest {
         userInfo.setAge(999);
         UserRole userRole = new UserRole();
         DepartmentalRole departmentalRole = new DepartmentalRole();
-        System.out.println(userservice.addTbuser(tbuser, userInfo,userRole,departmentalRole));
+        System.out.println(userservice.insterTbuser(tbuser, userInfo,userRole,departmentalRole));
+    }
+
+    @Test
+    public void testDeleteUser() {
+        Tbuser tbuser = new Tbuser();
+        tbuser.setTbuserId(2);
+        System.out.println(userservice.deleteTbuser(tbuser));
     }
 
 }
