@@ -9,6 +9,17 @@
         <association property="role" resultMap="roleMap"/>
         <association property="address" resultMap="addressMap"/>
         <association property="state" resultMap="stateMap"/>
+        <association property="department" resultMap="departmentMap"/>
+        <association property="departmentalRole" resultMap="departmentalRoleMap"/>
+    </resultMap>
+    <resultMap id="departmentMap" type="Department">
+        <id property="departmentId" column="department_id"/>
+        <result property="departmentName" column="department_name"/>
+    </resultMap>
+    <resultMap id="departmentalRoleMap" type="DepartmentalRole">
+        <id property="roleId" column="role_id"/>
+        <result property="departmentId" column="department_id"/>
+        <result property="departmentalRoleId" column="departmental_role_id"/>
     </resultMap>
     <resultMap id="addressMap" type="Address">
         <id property="addressId" column="address_id"/>
@@ -59,26 +70,32 @@
         <result property="householdRegistrationCode" column="household_registration_code"/>
     </resultMap>
     <select id="findTbuserVOByTbuserId" resultMap="TbuserVO" parameterType="integer">
-                SELECT tb.*, st.`state_name`,ro.`role_name`,ui.*,te.* FROM
+           SELECT * FROM
         tbuser tb,teacher te,user_info ui,
-        user_role ur,role ro,state st,address ad
+        user_role ur,role ro,state st,address ad,
+        department de, departmental_role dr
         WHERE tb.`tbuser_id`=ur.`tbuser_id`
         AND tb.`user_info_id`=ui.`user_info_id`
         AND te.`user_role_id`=ur.`user_role_id`
         AND ur.`role_id`=ro.`role_id`
+        AND ro.`role_id`=dr.`role_id`
+        AND dr.`department_id`=de.`department_id`
         AND st.`state_id`=te.`state_id`
         AND ui.`address_id`=ad.`address_id`
         AND tb.`tbuser_id`=#{tbuserId}
 
     </select>
     <select id="findTbuserVOList" resultMap="TbuserVO">
-            SELECT tb.*, st.`state_name`,ro.`role_name`,ui.*,te.* FROM
+         SELECT * FROM
         tbuser tb,teacher te,user_info ui,
-        user_role ur,role ro,state st,address ad
+        user_role ur,role ro,state st,address ad,
+        department de, departmental_role dr
         WHERE tb.`tbuser_id`=ur.`tbuser_id`
         AND tb.`user_info_id`=ui.`user_info_id`
         AND te.`user_role_id`=ur.`user_role_id`
         AND ur.`role_id`=ro.`role_id`
+        AND ro.`role_id`=dr.`role_id`
+        AND dr.`department_id`=de.`department_id`
         AND st.`state_id`=te.`state_id`
         AND ui.`address_id`=ad.`address_id`
 

@@ -14,18 +14,36 @@ public class TbuserUserInfoVO {
     private Role role;
     private Address address;
     private State state;
+    private Department department;
+    private DepartmentalRole departmentalRole;
 
-    @Override
-    public String toString() {
-        return "TbuserUserInfoVO{" +
-                "tbuser=" + tbuser +
-                ", userInfo=" + userInfo +
-                ", teacher=" + teacher +
-                ", userRole=" + userRole +
-                ", role=" + role +
-                ", address=" + address +
-                ", state=" + state +
-                '}';
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public DepartmentalRole getDepartmentalRole() {
+        return departmentalRole;
+    }
+
+    public void setDepartmentalRole(DepartmentalRole departmentalRole) {
+        this.departmentalRole = departmentalRole;
+    }
+
+    public TbuserUserInfoVO(Tbuser tbuser, UserInfo userInfo, Teacher teacher, UserRole userRole, Role role, Address address, State state, Department department, DepartmentalRole departmentalRole) {
+
+        this.tbuser = tbuser;
+        this.userInfo = userInfo;
+        this.teacher = teacher;
+        this.userRole = userRole;
+        this.role = role;
+        this.address = address;
+        this.state = state;
+        this.department = department;
+        this.departmentalRole = departmentalRole;
     }
 
     public Tbuser getTbuser() {
@@ -84,16 +102,7 @@ public class TbuserUserInfoVO {
         this.state = state;
     }
 
-    public TbuserUserInfoVO(Tbuser tbuser, UserInfo userInfo, Teacher teacher, UserRole userRole, Role role, Address address, State state) {
 
-        this.tbuser = tbuser;
-        this.userInfo = userInfo;
-        this.teacher = teacher;
-        this.userRole = userRole;
-        this.role = role;
-        this.address = address;
-        this.state = state;
-    }
 
     public TbuserUserInfoVO() {
 

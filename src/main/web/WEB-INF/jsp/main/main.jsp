@@ -10,8 +10,7 @@
 <html>
 <head>
     <title>北大青鸟</title>
-    <jsp:include page="${pageContext.request.contextPath}/WEB-INF/jsp/basic/basic.jsp"></jsp:include>
-
+    <jsp:include page="../basic/basic.jsp"/>
     <script type="text/javascript">
         $(function () {
            $("li>a").click(function () {
@@ -29,6 +28,20 @@
               }
 
            }) ;
+            $("#toPersonal").click(function () {
+                var title = $(this).text();
+                var url=$(this).attr("url");
+                var content="<iframe scrolling='auto' frameborder='0' style='width: 100%;height: 100%' src='"+url+"'>";
+                if($("#tt").tabs("exists",title)) {
+                    $('#tt').tabs("select",title);
+                }else{
+                    $("#tt").tabs("add",{
+                        title:title,
+                        content:content,
+                        closable:true
+                    });
+                }
+            })
         });
 
 
@@ -52,12 +65,15 @@
     <%--登录成功,欢迎您：--%>
     <%--${nickName}--%>
     <div class="easyui-layout" style="height: 100%; width: 100%">
-        <div region="north" style="width: 100%;height: 15%">
+        <div region="north" style="width: 100%;height: 20%">
             <div align="center">
                 <h2>北大青鸟</h2>
             </div>
-            <div align="right" style="width: 80%">
-                <h3>欢迎您：${nickName}</h3>
+            <div align="right" style="width: 70%;height:15%">
+                <h3> 欢迎您：${nickName}</h3>
+            </div>
+            <div align="right" style="width: 90%;height:15%">
+                <a id="toPersonal" href="#" url="${pageContext.request.contextPath}/employeeInfo/toPersonal.controller">个人信息</a>
             </div>
         </div>
         <div region="west" style="width: 20%" title="菜单栏">

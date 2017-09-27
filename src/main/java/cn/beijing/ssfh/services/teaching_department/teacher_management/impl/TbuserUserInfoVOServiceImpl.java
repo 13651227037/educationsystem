@@ -32,11 +32,23 @@ public class TbuserUserInfoVOServiceImpl implements TbuserUserInfoVOService {
     private RoleMapper roleMapper;
     @Inject
     private UserInfoMapper userInfoMapper;
+    /**
+     * @Description: 根据用户ID查询用户老师的一条信息
+     * @Author GuanChengHao
+     * @Date 2017/9/26 16:36
+     * @version V1.0
+     */
 
     @Override
     public TbuserUserInfoVO findTbuserVOByTbuserId(Integer userId) {
         return tbuserUserInfoVOMapper.findTbuserVOByTbuserId(userId);
     }
+    /**
+     * @Description: 查询用户老师的所有信息
+     * @Author GuanChengHao
+     * @Date 2017/9/26 16:37
+     * @version V1.0
+     */
 
     @Override
     public PageUtil<TbuserUserInfoVO> findTbuserVOList(Integer page, Integer rows) {
@@ -45,7 +57,7 @@ public class TbuserUserInfoVOServiceImpl implements TbuserUserInfoVOService {
         PageInfo<TbuserUserInfoVO> pageInfo = new PageInfo<>(list);
         return new PageUtil<>(pageInfo);
     }
-
+    //修改密码
     @Override
     public Integer updateByPrimaryKeySelective(Tbuser record) {
         return tbuserMapper.updateByPrimaryKeySelective(record);

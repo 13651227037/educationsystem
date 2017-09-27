@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Title</title>
-    <jsp:include page="${pageContext.request.contextPath}/WEB-INF/jsp/basic/basic.jsp"></jsp:include>
+    <jsp:include page="../basic/basic.jsp"/>
     <script type="text/javascript">
         $(function () {
             $.get("${pageContext.request.contextPath}/employeeInfo/queryPersonal.controller",
@@ -45,6 +45,7 @@
                 $("#detailTeacherTeachAge").textbox('setValue', result.teacher.teacherTeachAge);
                 $("#detailTbuserName").textbox('setValue', result.tbuser.username);
                 $("#updateUserName").textbox('setValue', result.tbuser.username);
+                $("#detaildepartmentName").textbox('setValue', result.department.departmentName);
                 $("#updateUserId").val(result.tbuser.tbuserId);
 
             })
@@ -119,6 +120,13 @@
         <td></td>
         <td align="left">
             <a class="easyui-linkbutton" id="updatePassword">修改密码</a>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">部门</td>
+        <td >  </td>
+        <td>
+            <input class="easyui-textbox" id="detaildepartmentName"  readonly>
         </td>
     </tr>
     <tr>

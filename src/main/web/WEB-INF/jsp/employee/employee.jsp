@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Title</title>
-    <jsp:include page="${pageContext.request.contextPath}/WEB-INF/jsp/basic/basic.jsp"></jsp:include>
+    <jsp:include page="../basic/basic.jsp"/>
     <script type="text/javascript">
         $(function () {
             $("#hobbyDataGride").datagrid({
@@ -23,15 +23,14 @@
                 pageList:[2,5,10],
                 columns:[[
                     {field:'ck',checkbox:true},
-                    {field:'stateName',title:'状况',width:50,formatter:stateNameFormatter},
-                    {field:'roleName',title:'职务',width:80,formatter:roleNameFormatter},
-                    {field:'teacherName',title:'姓名',width:60,formatter:teacherNameFormatter},
-                    {field:'gender',title:'性别',width:30,formatter:genderFormatter},
-                    {field:'telephone',title:'联系方式',width:100,formatter:telephoneFormatter},
-                    {field:'email',title:'邮箱',width:100,formatter:emailFormatter},
-                    {field:'teacherTeachAge',title:'工龄',width:40,formatter:teacherAgeFormatter},
-                    {field:'teacherMajor',title:'专业',width:50,formatter:teacherMajorFormatter},
-                    {field:'userId',title:'操作',width:200,formatter:userIdFormatter}
+                    {field:'stateName',title:'状况',width:100,formatter:stateNameFormatter},
+                    {field:'departmentName',title:'部门',width:80,formatter:departmentNameFormatter},
+                    {field:'roleName',title:'职务',width:150,formatter:roleNameFormatter},
+                    {field:'teacherName',title:'姓名',width:100,formatter:teacherNameFormatter},
+                    {field:'gender',title:'性别',width:60,formatter:genderFormatter},
+                    {field:'teacherTeachAge',title:'工龄',width:80,formatter:teacherAgeFormatter},
+                    {field:'teacherMajor',title:'专业',width:100,formatter:teacherMajorFormatter},
+                    {field:'userId',title:'操作',width:220,formatter:userIdFormatter}
 
                 ]],
                 toolbar:[
@@ -50,6 +49,8 @@
             })
             function stateNameFormatter(value,row) {
                 return row.state.stateName;
+            }function departmentNameFormatter(value,row) {
+                return row.department.departmentName;
             } function roleNameFormatter(value,row) {
                 return row.role.roleName;
             } function teacherNameFormatter(value,row) {
@@ -66,11 +67,7 @@
                 }
                 return gender;
             }
-            function telephoneFormatter(value,row) {
-                return row.teacher.telephone;
-            } function emailFormatter(value,row) {
-                return row.teacher.email;
-            }function teacherAgeFormatter(value,row) {
+            function teacherAgeFormatter(value,row) {
                 return row.teacher.teacherTeachAge;
             }function teacherMajorFormatter(value,row) {
                 return row.teacher.teacherMajor;
