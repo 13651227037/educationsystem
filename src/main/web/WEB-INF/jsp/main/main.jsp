@@ -10,7 +10,8 @@
 <html>
 <head>
     <title>北大青鸟</title>
-    <jsp:include page="../basic.jsp"></jsp:include>
+    <jsp:include page="${pageContext.request.contextPath}/WEB-INF/jsp/basic/basic.jsp"></jsp:include>
+
     <script type="text/javascript">
         $(function () {
            $("li>a").click(function () {

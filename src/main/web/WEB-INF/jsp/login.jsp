@@ -10,7 +10,7 @@
 
 <head>
     <title>Title</title>
-    <jsp:include page="basic.jsp"></jsp:include>
+    <jsp:include page="basic/basic.jsp"></jsp:include>
     <script type="text/javascript">
         $(function () {
             $("#loginButton").click(function () {
@@ -24,7 +24,7 @@
     <div id="loginWindow" class="easyui-window" title="登录"
          style="left: 35%;top: 25%; width: 400px;height: 250px; padding: 45px 60px"
          >
-        <form id="loginForm" action="${pageContext.request.contextPath}/toMain/toMain.controller" method="get">
+        <form id="loginForm" action="${pageContext.request.contextPath}/login/login.controller" method="post">
             <table>
                 <tr>
                     <td>用户名:</td>
@@ -47,9 +47,7 @@
             </table>
         </form>
     </div>
-    <div>
-        ${msg}
-    </div>
+
 
 </body>
 </html>

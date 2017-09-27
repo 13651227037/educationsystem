@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Title</title>
-    <jsp:include page="../basic.jsp"/>
+    <jsp:include page="${pageContext.request.contextPath}/WEB-INF/jsp/basic/basic.jsp"></jsp:include>
     <script type="text/javascript">
         $(function () {
             $.get("${pageContext.request.contextPath}/employeeInfo/queryPersonal.controller",

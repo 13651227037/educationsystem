@@ -14,7 +14,7 @@ public class ControllerLog {
     private final Logger logger= Logger.getLogger("ControllerLog");
 
     public void before(JoinPoint joinpoint){
-        logger.info("调用"+joinpoint.getTarget()+"de"+joinpoint.getSignature().getName()+"canshu"+
+        logger.info("调用"+joinpoint.getTarget()+"de"+joinpoint.getSignature().getName()+"参数"+
                 Arrays.toString(joinpoint.getArgs()));
     }
 
