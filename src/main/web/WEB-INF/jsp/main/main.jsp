@@ -32,25 +32,25 @@
             Please <a href="login.jsp">login</a> in order to update your credit card information<br>
         </shiro:notAuthenticated>
         <%--拥有角色的用户显示的内容--%>
-        <shiro:hasRole name="教务主管">
-            <a href="admin.jsp">Administer the system</a><br>
-        </shiro:hasRole>
+        <%--<shiro:hasRole name="教务主管">--%>
+            <%--<a href="admin.jsp">Administer the system</a><br>--%>
+        <%--</shiro:hasRole>--%>
         <%--未被分配具体角色的用户--%>
-        <shiro:lacksRole name="administrator">
+        <%--<shiro:lacksRole name="administrator">--%>
             Sorry, you are not allowed to administer the system.<br>
-        </shiro:lacksRole>
+        <%--</shiro:lacksRole>--%>
         <%--分配任意其中的一个即可显示--%>
-        <shiro:hasAnyRoles name="developer, project manager, administrator"><br>
-            You are either a developer, project manager, or administrater
-        </shiro:hasAnyRoles>
-        <%--具有特定角色，特定权限--%>
-        <shiro:hasPermission name="user:create">
-            <a href="createUser.jsp">Create a new User</a><br>
-        </shiro:hasPermission>
-        <%--没有特定角色特定权限显示--%>
-        <shiro:lacksPermission name="user:delete">
-            Sorry, you are not allowed to deleted user accounts<br>
-        </shiro:lacksPermission>
+        <%--<shiro:hasAnyRoles name="developer, project manager, administrator"><br>--%>
+            <%--You are either a developer, project manager, or administrater--%>
+        <%--</shiro:hasAnyRoles>--%>
+        <%--&lt;%&ndash;具有特定角色，特定权限&ndash;%&gt;--%>
+        <%--<shiro:hasPermission name="user:create">--%>
+            <%--<a href="createUser.jsp">Create a new User</a><br>--%>
+        <%--</shiro:hasPermission>--%>
+        <%--&lt;%&ndash;没有特定角色特定权限显示&ndash;%&gt;--%>
+        <%--<shiro:lacksPermission name="user:delete">--%>
+            <%--Sorry, you are not allowed to deleted user accounts<br>--%>
+        <%--</shiro:lacksPermission>--%>
 
 
         首页

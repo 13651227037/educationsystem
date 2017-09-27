@@ -21,6 +21,9 @@ public interface Userservice {
 
     Set<UserLoginVo> selectByUsername(String username);
 
-    int addTbuser(Tbuser tbuser, UserInfo userInfo,UserRole userRole,DepartmentalRole departmentalRole);
+    int insterTbuser(Tbuser tbuser, UserInfo userInfo,UserRole userRole,DepartmentalRole departmentalRole);
 
+    int deleteTbuser(Tbuser tbuser);
+
+    int updateTbuser(Tbuser tbuser);
 }
