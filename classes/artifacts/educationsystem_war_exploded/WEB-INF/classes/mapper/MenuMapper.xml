@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.MenuMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.Menu" >
+    <id column="menu_id" property="menuId" jdbcType="INTEGER" />
+    <result column="url_address" property="urlAddress" jdbcType="VARCHAR" />
+    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    menu_id, url_address, menu_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from menu
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.Menu" >
+    insert into menu (menu_id, url_address, menu_name
+      )
+    values (#{menuId,jdbcType=INTEGER}, #{urlAddress,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.Menu" >
+    insert into menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="menuId != null" >
+        menu_id,
+      </if>
+      <if test="urlAddress != null" >
+        url_address,
+      </if>
+      <if test="menuName != null" >
+        menu_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="menuId != null" >
+        #{menuId,jdbcType=INTEGER},
+      </if>
+      <if test="urlAddress != null" >
+        #{urlAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.Menu" >
+    update menu
+    <set >
+      <if test="urlAddress != null" >
+        url_address = #{urlAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null" >
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.Menu" >
+    update menu
+    set url_address = #{urlAddress,jdbcType=VARCHAR},
+      menu_name = #{menuName,jdbcType=VARCHAR}
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </update>
+</mapper>

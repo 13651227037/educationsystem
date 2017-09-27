@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.EnterpriseMaintenanceInformationSheetMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.EnterpriseMaintenanceInformationSheet" >
+    <id column="enterprise_maintenance_information_sheet_id" property="enterpriseMaintenanceInformationSheetId" jdbcType="INTEGER" />
+    <result column="enterprise_id" property="enterpriseId" jdbcType="INTEGER" />
+    <result column="time_of_return_visit" property="timeOfReturnVisit" jdbcType="DATE" />
+    <result column="return_to_the_person" property="returnToThePerson" jdbcType="VARCHAR" />
+    <result column="return_to_the_content" property="returnToTheContent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    enterprise_maintenance_information_sheet_id, enterprise_id, time_of_return_visit, 
+    return_to_the_person, return_to_the_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from enterprise_maintenance_information_sheet
+    where enterprise_maintenance_information_sheet_id = #{enterpriseMaintenanceInformationSheetId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from enterprise_maintenance_information_sheet
+    where enterprise_maintenance_information_sheet_id = #{enterpriseMaintenanceInformationSheetId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.EnterpriseMaintenanceInformationSheet" >
+    insert into enterprise_maintenance_information_sheet (enterprise_maintenance_information_sheet_id, enterprise_id, 
+      time_of_return_visit, return_to_the_person, return_to_the_content
+      )
+    values (#{enterpriseMaintenanceInformationSheetId,jdbcType=INTEGER}, #{enterpriseId,jdbcType=INTEGER}, 
+      #{timeOfReturnVisit,jdbcType=DATE}, #{returnToThePerson,jdbcType=VARCHAR}, #{returnToTheContent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.EnterpriseMaintenanceInformationSheet" >
+    insert into enterprise_maintenance_information_sheet
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="enterpriseMaintenanceInformationSheetId != null" >
+        enterprise_maintenance_information_sheet_id,
+      </if>
+      <if test="enterpriseId != null" >
+        enterprise_id,
+      </if>
+      <if test="timeOfReturnVisit != null" >
+        time_of_return_visit,
+      </if>
+      <if test="returnToThePerson != null" >
+        return_to_the_person,
+      </if>
+      <if test="returnToTheContent != null" >
+        return_to_the_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="enterpriseMaintenanceInformationSheetId != null" >
+        #{enterpriseMaintenanceInformationSheetId,jdbcType=INTEGER},
+      </if>
+      <if test="enterpriseId != null" >
+        #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="timeOfReturnVisit != null" >
+        #{timeOfReturnVisit,jdbcType=DATE},
+      </if>
+      <if test="returnToThePerson != null" >
+        #{returnToThePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="returnToTheContent != null" >
+        #{returnToTheContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.EnterpriseMaintenanceInformationSheet" >
+    update enterprise_maintenance_information_sheet
+    <set >
+      <if test="enterpriseId != null" >
+        enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="timeOfReturnVisit != null" >
+        time_of_return_visit = #{timeOfReturnVisit,jdbcType=DATE},
+      </if>
+      <if test="returnToThePerson != null" >
+        return_to_the_person = #{returnToThePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="returnToTheContent != null" >
+        return_to_the_content = #{returnToTheContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where enterprise_maintenance_information_sheet_id = #{enterpriseMaintenanceInformationSheetId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.EnterpriseMaintenanceInformationSheet" >
+    update enterprise_maintenance_information_sheet
+    set enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      time_of_return_visit = #{timeOfReturnVisit,jdbcType=DATE},
+      return_to_the_person = #{returnToThePerson,jdbcType=VARCHAR},
+      return_to_the_content = #{returnToTheContent,jdbcType=VARCHAR}
+    where enterprise_maintenance_information_sheet_id = #{enterpriseMaintenanceInformationSheetId,jdbcType=INTEGER}
+  </update>
+</mapper>

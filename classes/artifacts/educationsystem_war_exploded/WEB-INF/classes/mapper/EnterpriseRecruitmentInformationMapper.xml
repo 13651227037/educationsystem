@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.EnterpriseRecruitmentInformationMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.EnterpriseRecruitmentInformation" >
+    <id column="enterprise_recruitment_information_id" property="enterpriseRecruitmentInformationId" jdbcType="INTEGER" />
+    <result column="enterprise_id" property="enterpriseId" jdbcType="INTEGER" />
+    <result column="recruiting_post" property="recruitingPost" jdbcType="VARCHAR" />
+    <result column="recruitment_salary" property="recruitmentSalary" jdbcType="VARCHAR" />
+    <result column="hiring" property="hiring" jdbcType="INTEGER" />
+    <result column="educational_requirements" property="educationalRequirements" jdbcType="VARCHAR" />
+    <result column="foreign_language_requirements" property="foreignLanguageRequirements" jdbcType="VARCHAR" />
+    <result column="mode_of_recruitment" property="modeOfRecruitment" jdbcType="VARCHAR" />
+    <result column="work_address" property="workAddress" jdbcType="VARCHAR" />
+    <result column="date_of_recruitment" property="dateOfRecruitment" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    enterprise_recruitment_information_id, enterprise_id, recruiting_post, recruitment_salary, 
+    hiring, educational_requirements, foreign_language_requirements, mode_of_recruitment, 
+    work_address, date_of_recruitment
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from enterprise_recruitment_information
+    where enterprise_recruitment_information_id = #{enterpriseRecruitmentInformationId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from enterprise_recruitment_information
+    where enterprise_recruitment_information_id = #{enterpriseRecruitmentInformationId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.EnterpriseRecruitmentInformation" >
+    insert into enterprise_recruitment_information (enterprise_recruitment_information_id, enterprise_id, 
+      recruiting_post, recruitment_salary, hiring, 
+      educational_requirements, foreign_language_requirements, 
+      mode_of_recruitment, work_address, date_of_recruitment
+      )
+    values (#{enterpriseRecruitmentInformationId,jdbcType=INTEGER}, #{enterpriseId,jdbcType=INTEGER}, 
+      #{recruitingPost,jdbcType=VARCHAR}, #{recruitmentSalary,jdbcType=VARCHAR}, #{hiring,jdbcType=INTEGER}, 
+      #{educationalRequirements,jdbcType=VARCHAR}, #{foreignLanguageRequirements,jdbcType=VARCHAR}, 
+      #{modeOfRecruitment,jdbcType=VARCHAR}, #{workAddress,jdbcType=VARCHAR}, #{dateOfRecruitment,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.EnterpriseRecruitmentInformation" >
+    insert into enterprise_recruitment_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="enterpriseRecruitmentInformationId != null" >
+        enterprise_recruitment_information_id,
+      </if>
+      <if test="enterpriseId != null" >
+        enterprise_id,
+      </if>
+      <if test="recruitingPost != null" >
+        recruiting_post,
+      </if>
+      <if test="recruitmentSalary != null" >
+        recruitment_salary,
+      </if>
+      <if test="hiring != null" >
+        hiring,
+      </if>
+      <if test="educationalRequirements != null" >
+        educational_requirements,
+      </if>
+      <if test="foreignLanguageRequirements != null" >
+        foreign_language_requirements,
+      </if>
+      <if test="modeOfRecruitment != null" >
+        mode_of_recruitment,
+      </if>
+      <if test="workAddress != null" >
+        work_address,
+      </if>
+      <if test="dateOfRecruitment != null" >
+        date_of_recruitment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="enterpriseRecruitmentInformationId != null" >
+        #{enterpriseRecruitmentInformationId,jdbcType=INTEGER},
+      </if>
+      <if test="enterpriseId != null" >
+        #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="recruitingPost != null" >
+        #{recruitingPost,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitmentSalary != null" >
+        #{recruitmentSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="hiring != null" >
+        #{hiring,jdbcType=INTEGER},
+      </if>
+      <if test="educationalRequirements != null" >
+        #{educationalRequirements,jdbcType=VARCHAR},
+      </if>
+      <if test="foreignLanguageRequirements != null" >
+        #{foreignLanguageRequirements,jdbcType=VARCHAR},
+      </if>
+      <if test="modeOfRecruitment != null" >
+        #{modeOfRecruitment,jdbcType=VARCHAR},
+      </if>
+      <if test="workAddress != null" >
+        #{workAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dateOfRecruitment != null" >
+        #{dateOfRecruitment,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.EnterpriseRecruitmentInformation" >
+    update enterprise_recruitment_information
+    <set >
+      <if test="enterpriseId != null" >
+        enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="recruitingPost != null" >
+        recruiting_post = #{recruitingPost,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitmentSalary != null" >
+        recruitment_salary = #{recruitmentSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="hiring != null" >
+        hiring = #{hiring,jdbcType=INTEGER},
+      </if>
+      <if test="educationalRequirements != null" >
+        educational_requirements = #{educationalRequirements,jdbcType=VARCHAR},
+      </if>
+      <if test="foreignLanguageRequirements != null" >
+        foreign_language_requirements = #{foreignLanguageRequirements,jdbcType=VARCHAR},
+      </if>
+      <if test="modeOfRecruitment != null" >
+        mode_of_recruitment = #{modeOfRecruitment,jdbcType=VARCHAR},
+      </if>
+      <if test="workAddress != null" >
+        work_address = #{workAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dateOfRecruitment != null" >
+        date_of_recruitment = #{dateOfRecruitment,jdbcType=DATE},
+      </if>
+    </set>
+    where enterprise_recruitment_information_id = #{enterpriseRecruitmentInformationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.EnterpriseRecruitmentInformation" >
+    update enterprise_recruitment_information
+    set enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      recruiting_post = #{recruitingPost,jdbcType=VARCHAR},
+      recruitment_salary = #{recruitmentSalary,jdbcType=VARCHAR},
+      hiring = #{hiring,jdbcType=INTEGER},
+      educational_requirements = #{educationalRequirements,jdbcType=VARCHAR},
+      foreign_language_requirements = #{foreignLanguageRequirements,jdbcType=VARCHAR},
+      mode_of_recruitment = #{modeOfRecruitment,jdbcType=VARCHAR},
+      work_address = #{workAddress,jdbcType=VARCHAR},
+      date_of_recruitment = #{dateOfRecruitment,jdbcType=DATE}
+    where enterprise_recruitment_information_id = #{enterpriseRecruitmentInformationId,jdbcType=INTEGER}
+  </update>
+</mapper>

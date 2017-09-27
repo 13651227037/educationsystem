@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.SircleTimePartMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.SircleTimePart" >
+    <id column="sircle_time_part_id" property="sircleTimePartId" jdbcType="INTEGER" />
+    <result column="time_part" property="timePart" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sircle_time_part_id, time_part
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sircle_time_part
+    where sircle_time_part_id = #{sircleTimePartId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sircle_time_part
+    where sircle_time_part_id = #{sircleTimePartId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.SircleTimePart" >
+    insert into sircle_time_part (sircle_time_part_id, time_part)
+    values (#{sircleTimePartId,jdbcType=INTEGER}, #{timePart,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.SircleTimePart" >
+    insert into sircle_time_part
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sircleTimePartId != null" >
+        sircle_time_part_id,
+      </if>
+      <if test="timePart != null" >
+        time_part,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sircleTimePartId != null" >
+        #{sircleTimePartId,jdbcType=INTEGER},
+      </if>
+      <if test="timePart != null" >
+        #{timePart,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.SircleTimePart" >
+    update sircle_time_part
+    <set >
+      <if test="timePart != null" >
+        time_part = #{timePart,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sircle_time_part_id = #{sircleTimePartId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.SircleTimePart" >
+    update sircle_time_part
+    set time_part = #{timePart,jdbcType=INTEGER}
+    where sircle_time_part_id = #{sircleTimePartId,jdbcType=INTEGER}
+  </update>
+</mapper>

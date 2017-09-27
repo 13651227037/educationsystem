@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.TestScoreMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.TestScore" >
+    <id column="test_score_id" property="testScoreId" jdbcType="INTEGER" />
+    <result column="test_paper_id" property="testPaperId" jdbcType="INTEGER" />
+    <result column="student_id" property="studentId" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="DOUBLE" />
+    <result column="test_time" property="testTime" jdbcType="DATE" />
+    <result column="test_information_id" property="testInformationId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    test_score_id, test_paper_id, student_id, score, test_time, test_information_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_score
+    where test_score_id = #{testScoreId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from test_score
+    where test_score_id = #{testScoreId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.TestScore" >
+    insert into test_score (test_score_id, test_paper_id, student_id, 
+      score, test_time, test_information_id
+      )
+    values (#{testScoreId,jdbcType=INTEGER}, #{testPaperId,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, 
+      #{score,jdbcType=DOUBLE}, #{testTime,jdbcType=DATE}, #{testInformationId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.TestScore" >
+    insert into test_score
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="testScoreId != null" >
+        test_score_id,
+      </if>
+      <if test="testPaperId != null" >
+        test_paper_id,
+      </if>
+      <if test="studentId != null" >
+        student_id,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="testTime != null" >
+        test_time,
+      </if>
+      <if test="testInformationId != null" >
+        test_information_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="testScoreId != null" >
+        #{testScoreId,jdbcType=INTEGER},
+      </if>
+      <if test="testPaperId != null" >
+        #{testPaperId,jdbcType=INTEGER},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="testTime != null" >
+        #{testTime,jdbcType=DATE},
+      </if>
+      <if test="testInformationId != null" >
+        #{testInformationId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.TestScore" >
+    update test_score
+    <set >
+      <if test="testPaperId != null" >
+        test_paper_id = #{testPaperId,jdbcType=INTEGER},
+      </if>
+      <if test="studentId != null" >
+        student_id = #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="testTime != null" >
+        test_time = #{testTime,jdbcType=DATE},
+      </if>
+      <if test="testInformationId != null" >
+        test_information_id = #{testInformationId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where test_score_id = #{testScoreId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.TestScore" >
+    update test_score
+    set test_paper_id = #{testPaperId,jdbcType=INTEGER},
+      student_id = #{studentId,jdbcType=INTEGER},
+      score = #{score,jdbcType=DOUBLE},
+      test_time = #{testTime,jdbcType=DATE},
+      test_information_id = #{testInformationId,jdbcType=INTEGER}
+    where test_score_id = #{testScoreId,jdbcType=INTEGER}
+  </update>
+</mapper>

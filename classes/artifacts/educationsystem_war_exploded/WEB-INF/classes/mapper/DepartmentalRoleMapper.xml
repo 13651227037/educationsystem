@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.DepartmentalRoleMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.DepartmentalRole" >
+    <id column="departmental_role_id" property="departmentalRoleId" jdbcType="INTEGER" />
+    <result column="department_id" property="departmentId" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    departmental_role_id, department_id, role_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from departmental_role
+    where departmental_role_id = #{departmentalRoleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from departmental_role
+    where departmental_role_id = #{departmentalRoleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.DepartmentalRole" >
+    insert into departmental_role (departmental_role_id, department_id, 
+      role_id)
+    values (#{departmentalRoleId,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, 
+      #{roleId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.DepartmentalRole" >
+    insert into departmental_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="departmentalRoleId != null" >
+        departmental_role_id,
+      </if>
+      <if test="departmentId != null" >
+        department_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="departmentalRoleId != null" >
+        #{departmentalRoleId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.DepartmentalRole" >
+    update departmental_role
+    <set >
+      <if test="departmentId != null" >
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where departmental_role_id = #{departmentalRoleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.DepartmentalRole" >
+    update departmental_role
+    set department_id = #{departmentId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER}
+    where departmental_role_id = #{departmentalRoleId,jdbcType=INTEGER}
+  </update>
+</mapper>

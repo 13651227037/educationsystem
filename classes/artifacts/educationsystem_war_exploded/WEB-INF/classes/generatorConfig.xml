@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+<!--数据库连接JDBC驱动-->
+    <!--location放jar包,同目录可直接写jar包全名-->
+    <!--导入属性配置 -->
+    <!--<properties resource="generator.properties"></properties>-->
+
+    <!--指定特定数据库的jdbc驱动jar包的位置 -->
+    <classPathEntry location="C:/maven3.5/repositor/mysql/mysql-connector-java/5.1.42/mysql-connector-java-5.1.42.jar"/>
+
+    <context id="default" targetRuntime="MyBatis3">
+
+
+        <!-- optional，旨在创建class时，对注释进行控制 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+
+        <!--jdbc的数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/education_system"
+                        userId="root"
+                        password="admin">
+        </jdbcConnection>
+						
+        <!--实体生成器,数据库实体目标包,targetProject放在哪个工程里,不同工程时需要修改,targetPackage为接在idea工程
+		java目录下的目标包,没有时自动创建,此文件是以src/main/java/demo/entity为例-->
+         <javaModelGenerator targetPackage="cn.beijing.ssfh.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+			<!--是否在set方法中调用tirm方法,去除前后空格-->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--mapper接口生成器,同实体生成器,需要修改-->
+        <sqlMapGenerator targetPackage="cn.beijing.ssfh.mapper"
+                         targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+		<!--mapper.xml生成器,同实体生成器,需要修改-->
+        <javaClientGenerator targetPackage="cn.beijing.ssfh.mapper"
+                             targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        
+
+		
+	    <!--数据库中表与实体的对应,需要建几个就要有几个该元素,直接复制之后修改即可,tableName为数据库中的表名,
+		domainObjectName为实体名,只需修改这两项-->
+        <table tableName="grade" domainObjectName="Grade"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+
+        <table tableName="address" domainObjectName="Address"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="chapter" domainObjectName="Chapter"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="class_room" domainObjectName="ClassRoom"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="classroom_state" domainObjectName="ClassRoomState"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="course_plan" domainObjectName="CoursePlan"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="course_tables" domainObjectName="CourseTables"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="date_time" domainObjectName="DateTime"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="day_time" domainObjectName="DayTime"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="department" domainObjectName="Department"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+
+
+
+        <table tableName="departmental_permissions" domainObjectName="DepartmentalPermissions"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="departmental_role" domainObjectName="DepartmentalRole"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="employment" domainObjectName="Employment"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="enterprise" domainObjectName="Enterprise"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="enterprise_contact" domainObjectName="EnterpriseContact"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="enterprise_maintenance_information_sheet" domainObjectName="EnterpriseMaintenanceInformationSheet"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="enterprise_recruitment_information" domainObjectName="EnterpriseRecruitmentInformation"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="enterprise_teacher" domainObjectName="EnterpriseTeacher"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="grade_sircle" domainObjectName="GradeSircle"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="grade_state" domainObjectName="GradeState"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="grade_student" domainObjectName="GradeStudent"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="grade_teacher" domainObjectName="GradeTeacher"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="graduation_student_visit_record" domainObjectName="GraduationStudentVisitRecord"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="major" domainObjectName="Major"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="menu" domainObjectName="Menu"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="menu_permissions" domainObjectName="MenuPermissions"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="permissions" domainObjectName="Permissions"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="production" domainObjectName="Production"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="role" domainObjectName="Role"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="role_permissions" domainObjectName="RolePermissions"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="sircle_time_part" domainObjectName="SircleTimePart"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="state" domainObjectName="State"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="student_information" domainObjectName="StudentInformation"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="study_parts" domainObjectName="StudyParts"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="tbuser" domainObjectName="Tbuser"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="teacher" domainObjectName="Teacher"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="teacher_course" domainObjectName="TeacherCourse"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="teacher_state" domainObjectName="TeacherState"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="teaching_plan" domainObjectName="TeachingPlan"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="test_paper" domainObjectName="TestPaper"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="test_score" domainObjectName="TestScore"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="upload_path" domainObjectName="UploadPath"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="user_info" domainObjectName="UserInfo"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="user_role" domainObjectName="UserRole"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="week" domainObjectName="Week"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+        <table tableName="work_report" domainObjectName="WorkReport"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                               replaceString=""/>-->
+        </table>
+
+    </context>
+</generatorConfiguration>
+

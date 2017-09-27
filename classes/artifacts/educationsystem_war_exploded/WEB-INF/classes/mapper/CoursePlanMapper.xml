@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.CoursePlanMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.CoursePlan" >
+    <id column="course_plan_id" property="coursePlanId" jdbcType="INTEGER" />
+    <result column="grade_id" property="gradeId" jdbcType="INTEGER" />
+    <result column="chapter_id" property="chapterId" jdbcType="INTEGER" />
+    <result column="schedule" property="schedule" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    course_plan_id, grade_id, chapter_id, schedule
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from course_plan
+    where course_plan_id = #{coursePlanId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from course_plan
+    where course_plan_id = #{coursePlanId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.CoursePlan" >
+    insert into course_plan (course_plan_id, grade_id, chapter_id, 
+      schedule)
+    values (#{coursePlanId,jdbcType=INTEGER}, #{gradeId,jdbcType=INTEGER}, #{chapterId,jdbcType=INTEGER}, 
+      #{schedule,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.CoursePlan" >
+    insert into course_plan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coursePlanId != null" >
+        course_plan_id,
+      </if>
+      <if test="gradeId != null" >
+        grade_id,
+      </if>
+      <if test="chapterId != null" >
+        chapter_id,
+      </if>
+      <if test="schedule != null" >
+        schedule,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coursePlanId != null" >
+        #{coursePlanId,jdbcType=INTEGER},
+      </if>
+      <if test="gradeId != null" >
+        #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null" >
+        #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="schedule != null" >
+        #{schedule,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.CoursePlan" >
+    update course_plan
+    <set >
+      <if test="gradeId != null" >
+        grade_id = #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null" >
+        chapter_id = #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="schedule != null" >
+        schedule = #{schedule,jdbcType=INTEGER},
+      </if>
+    </set>
+    where course_plan_id = #{coursePlanId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.CoursePlan" >
+    update course_plan
+    set grade_id = #{gradeId,jdbcType=INTEGER},
+      chapter_id = #{chapterId,jdbcType=INTEGER},
+      schedule = #{schedule,jdbcType=INTEGER}
+    where course_plan_id = #{coursePlanId,jdbcType=INTEGER}
+  </update>
+</mapper>

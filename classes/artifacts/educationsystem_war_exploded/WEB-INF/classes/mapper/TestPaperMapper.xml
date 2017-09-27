@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.TestPaperMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.TestPaper" >
+    <id column="test_paper_id" property="testPaperId" jdbcType="INTEGER" />
+    <result column="path_id" property="pathId" jdbcType="INTEGER" />
+    <result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+    <result column="test_paper_url" property="testPaperUrl" jdbcType="VARCHAR" />
+    <result column="test_paper_name" property="testPaperName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="details" property="details" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    test_paper_id, path_id, teacher_id, test_paper_url, test_paper_name, create_time, 
+    details
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_paper
+    where test_paper_id = #{testPaperId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from test_paper
+    where test_paper_id = #{testPaperId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.TestPaper" >
+    insert into test_paper (test_paper_id, path_id, teacher_id, 
+      test_paper_url, test_paper_name, create_time, 
+      details)
+    values (#{testPaperId,jdbcType=INTEGER}, #{pathId,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER}, 
+      #{testPaperUrl,jdbcType=VARCHAR}, #{testPaperName,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, 
+      #{details,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.TestPaper" >
+    insert into test_paper
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="testPaperId != null" >
+        test_paper_id,
+      </if>
+      <if test="pathId != null" >
+        path_id,
+      </if>
+      <if test="teacherId != null" >
+        teacher_id,
+      </if>
+      <if test="testPaperUrl != null" >
+        test_paper_url,
+      </if>
+      <if test="testPaperName != null" >
+        test_paper_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="details != null" >
+        details,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="testPaperId != null" >
+        #{testPaperId,jdbcType=INTEGER},
+      </if>
+      <if test="pathId != null" >
+        #{pathId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="testPaperUrl != null" >
+        #{testPaperUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="testPaperName != null" >
+        #{testPaperName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="details != null" >
+        #{details,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.TestPaper" >
+    update test_paper
+    <set >
+      <if test="pathId != null" >
+        path_id = #{pathId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherId != null" >
+        teacher_id = #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="testPaperUrl != null" >
+        test_paper_url = #{testPaperUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="testPaperName != null" >
+        test_paper_name = #{testPaperName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="details != null" >
+        details = #{details,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where test_paper_id = #{testPaperId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.TestPaper" >
+    update test_paper
+    set path_id = #{pathId,jdbcType=INTEGER},
+      teacher_id = #{teacherId,jdbcType=INTEGER},
+      test_paper_url = #{testPaperUrl,jdbcType=VARCHAR},
+      test_paper_name = #{testPaperName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      details = #{details,jdbcType=VARCHAR}
+    where test_paper_id = #{testPaperId,jdbcType=INTEGER}
+  </update>
+</mapper>

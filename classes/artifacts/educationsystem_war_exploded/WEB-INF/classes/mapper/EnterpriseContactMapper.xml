@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.EnterpriseContactMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.EnterpriseContact" >
+    <id column="enterprise_contact_id" property="enterpriseContactId" jdbcType="INTEGER" />
+    <result column="enterprise_id" property="enterpriseId" jdbcType="INTEGER" />
+    <result column="contact_name" property="contactName" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="fixed_telephone" property="fixedTelephone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="contact_position" property="contactPosition" jdbcType="VARCHAR" />
+    <result column="number_of_days_not_connected" property="numberOfDaysNotConnected" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    enterprise_contact_id, enterprise_id, contact_name, phone, fixed_telephone, email, 
+    contact_position, number_of_days_not_connected
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from enterprise_contact
+    where enterprise_contact_id = #{enterpriseContactId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from enterprise_contact
+    where enterprise_contact_id = #{enterpriseContactId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.EnterpriseContact" >
+    insert into enterprise_contact (enterprise_contact_id, enterprise_id, 
+      contact_name, phone, fixed_telephone, 
+      email, contact_position, number_of_days_not_connected
+      )
+    values (#{enterpriseContactId,jdbcType=INTEGER}, #{enterpriseId,jdbcType=INTEGER}, 
+      #{contactName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{fixedTelephone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{contactPosition,jdbcType=VARCHAR}, #{numberOfDaysNotConnected,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.EnterpriseContact" >
+    insert into enterprise_contact
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="enterpriseContactId != null" >
+        enterprise_contact_id,
+      </if>
+      <if test="enterpriseId != null" >
+        enterprise_id,
+      </if>
+      <if test="contactName != null" >
+        contact_name,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="fixedTelephone != null" >
+        fixed_telephone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="contactPosition != null" >
+        contact_position,
+      </if>
+      <if test="numberOfDaysNotConnected != null" >
+        number_of_days_not_connected,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="enterpriseContactId != null" >
+        #{enterpriseContactId,jdbcType=INTEGER},
+      </if>
+      <if test="enterpriseId != null" >
+        #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fixedTelephone != null" >
+        #{fixedTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPosition != null" >
+        #{contactPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="numberOfDaysNotConnected != null" >
+        #{numberOfDaysNotConnected,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.EnterpriseContact" >
+    update enterprise_contact
+    <set >
+      <if test="enterpriseId != null" >
+        enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null" >
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fixedTelephone != null" >
+        fixed_telephone = #{fixedTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPosition != null" >
+        contact_position = #{contactPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="numberOfDaysNotConnected != null" >
+        number_of_days_not_connected = #{numberOfDaysNotConnected,jdbcType=INTEGER},
+      </if>
+    </set>
+    where enterprise_contact_id = #{enterpriseContactId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.EnterpriseContact" >
+    update enterprise_contact
+    set enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      fixed_telephone = #{fixedTelephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      contact_position = #{contactPosition,jdbcType=VARCHAR},
+      number_of_days_not_connected = #{numberOfDaysNotConnected,jdbcType=INTEGER}
+    where enterprise_contact_id = #{enterpriseContactId,jdbcType=INTEGER}
+  </update>
+</mapper>

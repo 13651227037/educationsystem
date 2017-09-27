@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.EnterpriseMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.Enterprise" >
+    <id column="enterprise_id" property="enterpriseId" jdbcType="INTEGER" />
+    <result column="address_id" property="addressId" jdbcType="INTEGER" />
+    <result column="enterprise_name" property="enterpriseName" jdbcType="VARCHAR" />
+    <result column="enterprise_scale" property="enterpriseScale" jdbcType="VARCHAR" />
+    <result column="enterprise_nature" property="enterpriseNature" jdbcType="VARCHAR" />
+    <result column="enterprise_industry" property="enterpriseIndustry" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    enterprise_id, address_id, enterprise_name, enterprise_scale, enterprise_nature, 
+    enterprise_industry
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from enterprise
+    where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from enterprise
+    where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.Enterprise" >
+    insert into enterprise (enterprise_id, address_id, enterprise_name, 
+      enterprise_scale, enterprise_nature, enterprise_industry
+      )
+    values (#{enterpriseId,jdbcType=INTEGER}, #{addressId,jdbcType=INTEGER}, #{enterpriseName,jdbcType=VARCHAR}, 
+      #{enterpriseScale,jdbcType=VARCHAR}, #{enterpriseNature,jdbcType=VARCHAR}, #{enterpriseIndustry,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.Enterprise" >
+    insert into enterprise
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="enterpriseId != null" >
+        enterprise_id,
+      </if>
+      <if test="addressId != null" >
+        address_id,
+      </if>
+      <if test="enterpriseName != null" >
+        enterprise_name,
+      </if>
+      <if test="enterpriseScale != null" >
+        enterprise_scale,
+      </if>
+      <if test="enterpriseNature != null" >
+        enterprise_nature,
+      </if>
+      <if test="enterpriseIndustry != null" >
+        enterprise_industry,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="enterpriseId != null" >
+        #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="addressId != null" >
+        #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="enterpriseName != null" >
+        #{enterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseScale != null" >
+        #{enterpriseScale,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseNature != null" >
+        #{enterpriseNature,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseIndustry != null" >
+        #{enterpriseIndustry,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.Enterprise" >
+    update enterprise
+    <set >
+      <if test="addressId != null" >
+        address_id = #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="enterpriseName != null" >
+        enterprise_name = #{enterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseScale != null" >
+        enterprise_scale = #{enterpriseScale,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseNature != null" >
+        enterprise_nature = #{enterpriseNature,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseIndustry != null" >
+        enterprise_industry = #{enterpriseIndustry,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.Enterprise" >
+    update enterprise
+    set address_id = #{addressId,jdbcType=INTEGER},
+      enterprise_name = #{enterpriseName,jdbcType=VARCHAR},
+      enterprise_scale = #{enterpriseScale,jdbcType=VARCHAR},
+      enterprise_nature = #{enterpriseNature,jdbcType=VARCHAR},
+      enterprise_industry = #{enterpriseIndustry,jdbcType=VARCHAR}
+    where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
+  </update>
+</mapper>

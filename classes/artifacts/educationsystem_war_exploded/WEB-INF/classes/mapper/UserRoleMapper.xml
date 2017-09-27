@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.UserRoleMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.UserRole" >
+    <id column="user_role_id" property="userRoleId" jdbcType="INTEGER" />
+    <result column="tbuser_id" property="tbuserId" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_role_id, tbuser_id, role_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_role
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.UserRole" >
+    insert into user_role (user_role_id, tbuser_id, role_id
+      )
+    values (#{userRoleId,jdbcType=INTEGER}, #{tbuserId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.UserRole" >
+    insert into user_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userRoleId != null" >
+        user_role_id,
+      </if>
+      <if test="tbuserId != null" >
+        tbuser_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userRoleId != null" >
+        #{userRoleId,jdbcType=INTEGER},
+      </if>
+      <if test="tbuserId != null" >
+        #{tbuserId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.UserRole" >
+    update user_role
+    <set >
+      <if test="tbuserId != null" >
+        tbuser_id = #{tbuserId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.UserRole" >
+    update user_role
+    set tbuser_id = #{tbuserId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER}
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </update>
+</mapper>

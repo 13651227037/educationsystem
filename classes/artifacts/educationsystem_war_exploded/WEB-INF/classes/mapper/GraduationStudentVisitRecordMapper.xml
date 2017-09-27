@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.GraduationStudentVisitRecordMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.GraduationStudentVisitRecord" >
+    <id column="graduation_student_visit_record_id" property="graduationStudentVisitRecordId" jdbcType="INTEGER" />
+    <result column="student_id" property="studentId" jdbcType="INTEGER" />
+    <result column="review_content" property="reviewContent" jdbcType="VARCHAR" />
+    <result column="visit_time" property="visitTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    graduation_student_visit_record_id, student_id, review_content, visit_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from graduation_student_visit_record
+    where graduation_student_visit_record_id = #{graduationStudentVisitRecordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from graduation_student_visit_record
+    where graduation_student_visit_record_id = #{graduationStudentVisitRecordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.GraduationStudentVisitRecord" >
+    insert into graduation_student_visit_record (graduation_student_visit_record_id, student_id, 
+      review_content, visit_time)
+    values (#{graduationStudentVisitRecordId,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, 
+      #{reviewContent,jdbcType=VARCHAR}, #{visitTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.GraduationStudentVisitRecord" >
+    insert into graduation_student_visit_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="graduationStudentVisitRecordId != null" >
+        graduation_student_visit_record_id,
+      </if>
+      <if test="studentId != null" >
+        student_id,
+      </if>
+      <if test="reviewContent != null" >
+        review_content,
+      </if>
+      <if test="visitTime != null" >
+        visit_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="graduationStudentVisitRecordId != null" >
+        #{graduationStudentVisitRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="reviewContent != null" >
+        #{reviewContent,jdbcType=VARCHAR},
+      </if>
+      <if test="visitTime != null" >
+        #{visitTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.GraduationStudentVisitRecord" >
+    update graduation_student_visit_record
+    <set >
+      <if test="studentId != null" >
+        student_id = #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="reviewContent != null" >
+        review_content = #{reviewContent,jdbcType=VARCHAR},
+      </if>
+      <if test="visitTime != null" >
+        visit_time = #{visitTime,jdbcType=DATE},
+      </if>
+    </set>
+    where graduation_student_visit_record_id = #{graduationStudentVisitRecordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.GraduationStudentVisitRecord" >
+    update graduation_student_visit_record
+    set student_id = #{studentId,jdbcType=INTEGER},
+      review_content = #{reviewContent,jdbcType=VARCHAR},
+      visit_time = #{visitTime,jdbcType=DATE}
+    where graduation_student_visit_record_id = #{graduationStudentVisitRecordId,jdbcType=INTEGER}
+  </update>
+</mapper>

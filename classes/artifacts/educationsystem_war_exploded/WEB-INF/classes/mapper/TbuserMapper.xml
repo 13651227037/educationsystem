@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.TbuserMapper" >
+  
+  <resultMap id="tbuserVOMap" type="cn.beijing.ssfh.pojo.vo.UserLoginVo">
+    <id property="tbuserId" column="tbuser_id"></id>
+    <result property="username" column="username"/>
+    <result property="password" column="password"/>
+    <association property="list" resultMap="roleMap"/>
+  </resultMap>
+  <resultMap id="roleMap" type="cn.beijing.ssfh.pojo.vo.RoleVO" autoMapping="true">
+     <id property="id" column="role_id"></id>
+    <result column="role_name" property="roleName"/>
+    <association property="list" resultMap="preMap"/>
+  </resultMap>
+  <resultMap id="preMap" type="cn.beijing.ssfh.entity.Premissions">
+    <id property="permissionsId" column="permission_id"/>
+    <result column="permission_name" property="permissionsName"/>
+  </resultMap>
+
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.Tbuser" >
+    <id column="tbuser_id" property="tbuserId" jdbcType="INTEGER" />
+    <result column="user_info_id" property="userInfoId" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tbuser_id, user_info_id, username, password
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="tbuserVOMap" parameterType="java.lang.Integer" >
+  SELECT rp.`permissions_id`,tu.`username`,tu.`password`,ur.`role_id`,ro.`role_name`,pre.`permissions_name`,pre.`details` FROM tbuser tu,user_role ur,role_permissions rp,role ro,premissions pre
+  WHERE tu.`tbuser_id`=ur.`tbuser_id`
+  AND ro.`role_id`=ur.`role_id`
+  AND rp.`role_id`=ur.`role_id`
+  AND pre.`permissions_id`=rp.`permissions_id`
+  AND tu.`tbuser_id`=#{tbuserId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbuser
+    where tbuser_id = #{tbuserId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.Tbuser" >
+    insert into tbuser (tbuser_id, user_info_id, username, 
+      password)
+    values (#{tbuserId,jdbcType=INTEGER}, #{userInfoId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.Tbuser" >
+    insert into tbuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tbuserId != null" >
+        tbuser_id,
+      </if>
+      <if test="userInfoId != null" >
+        user_info_id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tbuserId != null" >
+        #{tbuserId,jdbcType=INTEGER},
+      </if>
+      <if test="userInfoId != null" >
+        #{userInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.Tbuser" >
+    update tbuser
+    <set >
+      <if test="userInfoId != null" >
+        user_info_id = #{userInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tbuser_id = #{tbuserId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.Tbuser" >
+    update tbuser
+    set user_info_id = #{userInfoId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where tbuser_id = #{tbuserId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByUsername" parameterType="String" resultMap="tbuserVOMap">
+    SELECT rp.`permissions_id`,tu.`username`,tu.`password`,ur.`role_id`,ro.`role_name`,pre.`permissions_name`,pre.`details` FROM tbuser tu,user_role ur,role_permissions rp,role ro,premissions pre
+  WHERE tu.`tbuser_id`=ur.`tbuser_id`
+  AND ro.`role_id`=ur.`role_id`
+  AND rp.`role_id`=ur.`role_id`
+AND pre.`permissions_id`=rp.`permissions_id`
+AND tu.`username`=#{username}
+  </select>
+  <select id="getTbuserByUsername" parameterType="String" resultMap="BaseResultMap">
+    select * from education_system.tbuser WHERE username=#{username};
+  </select>
+  <select id="selectRolesByUsername" resultType="String" parameterType="String">
+  SELECT ro.`role_name` FROM tbuser tu,user_role ur,role ro
+  WHERE tu.`tbuser_id`=ur.`tbuser_id`
+  AND ro.`role_id`=ur.`role_id`
+AND tu.`username`=#{username}
+  </select>
+  <select id="selectPremissionsByUsername" resultType="String" parameterType="String">
+  SELECT pre.`permissions_name` FROM tbuser tu,user_role ur,role_permissions rp,role ro,premissions pre
+  WHERE tu.`tbuser_id`=ur.`tbuser_id`
+  AND ro.`role_id`=ur.`role_id`
+  AND rp.`role_id`=ur.`role_id`
+  AND pre.`permissions_id`=rp.`permissions_id`
+  AND tu.`username`=#{username}
+  </select>
+</mapper>

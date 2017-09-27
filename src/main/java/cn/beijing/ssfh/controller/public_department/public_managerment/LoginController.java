@@ -13,6 +13,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,6 +25,15 @@ import javax.annotation.Resource;
 @Controller
 @RequestMapping("login")
 public class LoginController {
+
+
+
+    @GetMapping(value = "doLoginController")
+    public String login() {
+        return "main/main";
+    }
+
+
 
     @Resource
     private Userservice userservice;

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.StudyPartsMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.StudyParts" >
+    <id column="study_parts_id" property="studyPartsId" jdbcType="INTEGER" />
+    <result column="production_id" property="productionId" jdbcType="INTEGER" />
+    <result column="phase_name" property="phaseName" jdbcType="VARCHAR" />
+    <result column="phase_duration" property="phaseDuration" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    study_parts_id, production_id, phase_name, phase_duration
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from study_parts
+    where study_parts_id = #{studyPartsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from study_parts
+    where study_parts_id = #{studyPartsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.StudyParts" >
+    insert into study_parts (study_parts_id, production_id, phase_name, 
+      phase_duration)
+    values (#{studyPartsId,jdbcType=INTEGER}, #{productionId,jdbcType=INTEGER}, #{phaseName,jdbcType=VARCHAR}, 
+      #{phaseDuration,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.StudyParts" >
+    insert into study_parts
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studyPartsId != null" >
+        study_parts_id,
+      </if>
+      <if test="productionId != null" >
+        production_id,
+      </if>
+      <if test="phaseName != null" >
+        phase_name,
+      </if>
+      <if test="phaseDuration != null" >
+        phase_duration,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studyPartsId != null" >
+        #{studyPartsId,jdbcType=INTEGER},
+      </if>
+      <if test="productionId != null" >
+        #{productionId,jdbcType=INTEGER},
+      </if>
+      <if test="phaseName != null" >
+        #{phaseName,jdbcType=VARCHAR},
+      </if>
+      <if test="phaseDuration != null" >
+        #{phaseDuration,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.StudyParts" >
+    update study_parts
+    <set >
+      <if test="productionId != null" >
+        production_id = #{productionId,jdbcType=INTEGER},
+      </if>
+      <if test="phaseName != null" >
+        phase_name = #{phaseName,jdbcType=VARCHAR},
+      </if>
+      <if test="phaseDuration != null" >
+        phase_duration = #{phaseDuration,jdbcType=INTEGER},
+      </if>
+    </set>
+    where study_parts_id = #{studyPartsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.StudyParts" >
+    update study_parts
+    set production_id = #{productionId,jdbcType=INTEGER},
+      phase_name = #{phaseName,jdbcType=VARCHAR},
+      phase_duration = #{phaseDuration,jdbcType=INTEGER}
+    where study_parts_id = #{studyPartsId,jdbcType=INTEGER}
+  </update>
+</mapper>
