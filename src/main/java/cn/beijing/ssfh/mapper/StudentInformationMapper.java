@@ -1,5 +1,6 @@
 package cn.beijing.ssfh.mapper;
 
+import cn.beijing.ssfh.entity.Employment;
 import cn.beijing.ssfh.entity.StudentInformation;
 import cn.beijing.ssfh.pojo.vo.OneStudentEmploymentVO;
 import cn.beijing.ssfh.pojo.vo.StudentEmploymentVO;
@@ -61,6 +62,16 @@ public interface StudentInformationMapper {
 
     //查询一条学生就业信息
     OneStudentEmploymentVO selectOneStudentEmployment(Integer studentId);
+
+    //修改学生就业信息
+    Integer updateOneStudentEmployment(OneStudentEmploymentVO oneStudentEmploymentVO);
+
+    //查询所有学生信息
+    List<StudentInformation> selectAllStudentInformation();
+
+    //新增学生就业信息
+
+    Integer insertStudentEmployment(Employment employment);
 
 
 

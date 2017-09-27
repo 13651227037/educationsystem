@@ -1,6 +1,9 @@
 package cn.beijing.ssfh.mapper;
 
 import cn.beijing.ssfh.entity.Teacher;
+import cn.beijing.ssfh.pojo.vo.GradeTeacherVO;
+
+import java.util.List;
 
 public interface TeacherMapper {
     /**
@@ -50,4 +53,7 @@ public interface TeacherMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Teacher record);
+
+    //通过班级ID查全部老师
+    List<GradeTeacherVO> selectAllTeacherByGradeId(Integer gradeId);
 }

@@ -28,6 +28,7 @@
     <result column="emergency_contact" property="emergencyContact" jdbcType="VARCHAR" />
     <result column="emergency_contact_tel" property="emergencyContactTel" jdbcType="VARCHAR" />
     <result column="household_registration_code" property="householdRegistrationCode" jdbcType="VARCHAR" />
+      <result column="state_id" property="stateId" jdbcType="INTEGER"/>
   </resultMap>
   <sql id="Base_Column_List" >
     <!--
@@ -325,13 +326,14 @@
   </update>
 
   <select id="selectAllStudentProfile" resultMap="studentProfile">
-        SELECT
+        SELECT DISTINCT
         si.`student_id`,si.`student_name`,g.`grade_id`,g.`grade_name`,g.`start_time`,m.`major_id`,m.`major_name`,p.`version_num`,p.`version_state`
         FROM
         student_information si,grade g,grade_student gs,
         teacher t,grade_teacher gt,teacher_course tc,
         chapter c,study_parts sp,
-        production p,major m
+        production p,major m,
+        state s
         WHERE gs.`grade_id`=g.`grade_id`
         AND gs.`student_id`=si.`student_id`
         AND gt.`grade_id`=g.`grade_id`
@@ -341,6 +343,7 @@
         AND sp.`study_parts_id`=c.`study_parts_id`
         AND p.`production_id`=sp.`production_id`
         AND m.`major_id`=p.`major_id`
+        AND si.`state_id`=s.`state_id`
   </select>
   <resultMap id="studentProfile" type="cn.beijing.ssfh.pojo.vo.StudentProfileVO">
     <id property="studentId" column="student_id"/>
@@ -354,36 +357,45 @@
     <result property="studentName" column="student_name"/>
   </resultMap>
   <select id="selectOneStudentProfile" resultMap="studentProfile" parameterType="integer">
-    SELECT
-    si.`student_id`,si.`student_name`,g.`grade_id`,g.`grade_name`,g.`start_time`,m.`major_id`,m.`major_name`,p.`version_num`,p.`version_state`
-    FROM
-    student_information si,grade g,grade_student gs,
-    teacher t,grade_teacher gt,teacher_course tc,
-    chapter c,study_parts sp,
-    production p,major m
-    WHERE gs.`grade_id`=g.`grade_id`
-    AND gs.`student_id`=si.`student_id`
-    AND gt.`grade_id`=g.`grade_id`
-    AND gt.`teacher_id`=t.`teacher_id`
-    AND tc.`chapter_id`=c.`chapter_id`
-    AND tc.`teacher_id`=t.`teacher_id`
-    AND sp.`study_parts_id`=c.`study_parts_id`
-    AND p.`production_id`=sp.`production_id`
-    AND m.`major_id`=p.`major_id`
-    AND si.student_id=#{studentId}
+        SELECT DISTINCT
+        si.`student_id`,si.`student_name`,g.`grade_id`,g.`grade_name`,g.`start_time`,m.`major_id`,m.`major_name`,p.`version_num`,p.`version_state`
+        FROM
+        student_information si,grade g,grade_student gs,
+        teacher t,grade_teacher gt,teacher_course tc,
+        chapter c,study_parts sp,
+        production p,major m,
+        state s
+        WHERE gs.`grade_id`=g.`grade_id`
+        AND gs.`student_id`=si.`student_id`
+        AND gt.`grade_id`=g.`grade_id`
+        AND gt.`teacher_id`=t.`teacher_id`
+        AND tc.`chapter_id`=c.`chapter_id`
+        AND tc.`teacher_id`=t.`teacher_id`
+        AND sp.`study_parts_id`=c.`study_parts_id`
+        AND p.`production_id`=sp.`production_id`
+        AND m.`major_id`=p.`major_id`
+        AND si.`state_id`=s.`state_id`
+        AND si.student_id=#{studentId}
   </select>
 
   <select id="selectAllStudentEmployment" resultMap="studentEmployment">
         SELECT
-        si.`student_id`,si.`student_name`,g.`grade_id`,g.`grade_name`,e.`employment_id`,e.`employment_enterprise`,e.`date_employment`,e.`salary`,t.`teacher_id`,t.`teacher_name`
+        si.`student_id`,si.`student_name`,g.`grade_id`,g.`grade_name`,e.*,t.`teacher_id`,t.`teacher_name`
         FROM
         student_information si,grade g,grade_student gs,
-        teacher t,grade_teacher gt,employment e
+        teacher t,grade_teacher gt,employment e,
+        user_role ur,role r,
+        state s
         WHERE gs.`grade_id`=g.`grade_id`
         AND gs.`student_id`=si.`student_id`
         AND gt.`grade_id`=g.`grade_id`
         AND gt.`teacher_id`=t.`teacher_id`
         AND e.`student_id`=si.`student_id`
+        AND t.`user_role_id`=ur.`user_role_id`
+        AND ur.`role_id`=r.`role_id`
+        AND si.`state_id`=s.`state_id`
+        AND r.`role_name` LIKE '%就业老师%'
+        AND s.`state_id`=12
   </select>
   <resultMap id="studentEmployment" type="cn.beijing.ssfh.pojo.vo.StudentEmploymentVO">
     <id property="studentId" column="student_id"/>
@@ -397,6 +409,8 @@
     <result property="teacherId" column="teacher_id"/>
     <result property="teacherName" column="teacher_name"/>
     <result property="studentName" column="student_name"/>
+      <result property="jobs" column="jobs"/>
+      <result property="workAddress" column="work_address"/>
   </resultMap>
   
   <select id="selectOneStudentEmployment" resultMap="oneStudentEmployment" parameterType="integer">
@@ -420,6 +434,91 @@
     <result property="jobs" column="jobs"/>
     <result property="salary" column="salary"/>
   </resultMap>
+
+  <update id="updateOneStudentEmployment" parameterType="cn.beijing.ssfh.pojo.vo.OneStudentEmploymentVO">
+UPDATE
+employment e,student_information si
+<set>
+<if test="studentName!=null">
+si.`student_name`=#{studentName},
+</if>
+<if test="dateEmployment!=null">
+e.`date_employment`=#{dateEmployment},
+</if>
+<if test="employmentEnterprise!=null">
+e.`employment_enterprise`=#{employmentEnterprise},
+</if>
+<if test="jobs!=null">
+e.`jobs`=#{jobs},
+</if>
+<if test="salary!=null">
+e.`salary`=#{salary},
+</if>
+<if test="workAddress!=null">
+e.`work_address`=#{workAddress}
+</if>
+</set>
+WHERE
+e.`student_id`=si.`student_id`
+AND
+e.`employment_id`=#{employmentId}
+  </update>
+  
+  <select id="selectAllStudentInformation" resultMap="BaseResultMap">
+        SELECT * FROM
+        student_information si
+        WHERE si.`state_id`=12
+  </select>
+
+    <insert id="insertStudentEmployment" parameterType="cn.beijing.ssfh.pojo.vo.StudentEmploymentVO">
+        insert into employment
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="employmentId != null" >
+                employment_id,
+            </if>
+            <if test="studentId != null" >
+                student_id,
+            </if>
+            <if test="dateEmployment != null" >
+                date_employment,
+            </if>
+            <if test="employmentEnterprise != null" >
+                employment_enterprise,
+            </if>
+            <if test="jobs != null" >
+                jobs,
+            </if>
+            <if test="salary != null" >
+                salary,
+            </if>
+            <if test="workAddress != null" >
+                work_address,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="employmentId != null" >
+                #{employmentId},
+            </if>
+            <if test="studentId != null" >
+                #{studentId},
+            </if>
+            <if test="dateEmployment != null" >
+                #{dateEmployment},
+            </if>
+            <if test="employmentEnterprise != null" >
+                #{employmentEnterprise},
+            </if>
+            <if test="jobs != null" >
+                #{jobs},
+            </if>
+            <if test="salary != null" >
+                #{salary},
+            </if>
+            <if test="workAddress != null" >
+                #{workAddress},
+            </if>
+        </trim>
+    </insert>
 
 
 </mapper>

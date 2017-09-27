@@ -171,4 +171,20 @@
       teacher_major = #{teacherMajor,jdbcType=VARCHAR}
     where teacher_id = #{teacherId,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectAllTeacherByGradeId" resultMap="gradeTeacher" parameterType="integer">
+        SELECT t.`teacher_id`,t.`teacher_name`
+        FROM
+        grade g,grade_teacher gt,teacher t,user_role ur,role r
+        WHERE gt.`grade_id`=g.`grade_id`
+        AND gt.`teacher_id`=t.`teacher_id`
+        AND ur.`role_id`=r.`role_id`
+        AND ur.`user_role_id`=t.`user_role_id`
+        AND r.`role_id`=11
+        AND g.`grade_id`=#{gradeId}
+  </select>
+  <resultMap id="gradeTeacher" type="cn.beijing.ssfh.pojo.vo.GradeTeacherVO">
+    <id property="teacherId" column="teacher_id"/>
+    <result property="teacherName" column="teacher_name"/>
+  </resultMap>
 </mapper>

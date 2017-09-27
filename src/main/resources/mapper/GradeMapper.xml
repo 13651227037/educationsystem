@@ -146,4 +146,21 @@
       start_time = #{startTime,jdbcType=DATE}
     where grade_id = #{gradeId,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectAllGradeByStudentId" resultMap="studentGrade" parameterType="integer">
+        SELECT
+        g.`grade_id`,g.`grade_name`
+        FROM
+        student_information si,grade_student gs,grade g
+        WHERE
+        gs.`grade_id`=g.`grade_id`
+        AND
+        gs.`student_id`=si.`student_id`
+        AND
+        si.`student_id`=#{studentId}
+  </select>
+  <resultMap id="studentGrade" type="cn.beijing.ssfh.pojo.vo.StudentGradeVO">
+    <id property="gradeId" column="grade_id"></id>
+    <result property="gradeName" column="grade_name"></result>
+  </resultMap>
 </mapper>

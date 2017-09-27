@@ -1,6 +1,9 @@
 package cn.beijing.ssfh.mapper;
 
 import cn.beijing.ssfh.entity.Grade;
+import cn.beijing.ssfh.pojo.vo.StudentGradeVO;
+
+import java.util.List;
 
 public interface GradeMapper {
     /**
@@ -50,4 +53,8 @@ public interface GradeMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Grade record);
+
+    //通过学生查班级
+    List<StudentGradeVO> selectAllGradeByStudentId(Integer studentId);
+
 }
