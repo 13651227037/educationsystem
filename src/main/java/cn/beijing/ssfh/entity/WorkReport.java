@@ -23,6 +23,22 @@ public class WorkReport {
 
     private Integer reviewId;
 
+    @Override
+    public String toString() {
+        return "WorkReport{" +
+                "workReportId=" + workReportId +
+                ", userInfoId=" + userInfoId +
+                ", tomorrowWorkPlan='" + tomorrowWorkPlan + '\'' +
+                ", workReportContent='" + workReportContent + '\'' +
+                ", workReportDate=" + workReportDate +
+                ", workingExperience='" + workingExperience + '\'' +
+                ", reviewWorkReport='" + reviewWorkReport + '\'' +
+                ", submitReportTime=" + submitReportTime +
+                ", reviewStatus=" + reviewStatus +
+                ", reviewId=" + reviewId +
+                '}';
+    }
+
     public Integer getWorkReportId() {
         return workReportId;
     }

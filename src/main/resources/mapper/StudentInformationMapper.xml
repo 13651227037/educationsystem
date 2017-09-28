@@ -30,13 +30,16 @@
     student_id, address_id, student_name, student_num, gender, native_place, home_address, 
     telephone, email, document_type, document_number, nation, birth_date, age, education, 
     profession, graduation_date, parents_name, parents_tel, emergency_contact, emergency_contact_tel, 
-    household_registration_code, student_state
+    household_registration_code
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
+    *
     from student_information
-    where student_id = #{studentId,jdbcType=INTEGER}
+    where student_id = #{studentId}
+  </select>
+  <select id="listQueryStudentState" resultMap="BaseResultMap">
+    select * from student_information
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from student_information

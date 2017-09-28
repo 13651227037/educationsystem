@@ -14,4 +14,6 @@ public interface EnterpriseMaintenanceInformationSheetMapper {
     int updateByPrimaryKeySelective(EnterpriseMaintenanceInformationSheet record);
 
     int updateByPrimaryKey(EnterpriseMaintenanceInformationSheet record);
+
+    EnterpriseMaintenanceInformationSheet selectByEnterPriseIdNearByNow(Integer Enterpriseid);
 }

@@ -2,6 +2,8 @@ package cn.beijing.ssfh.mapper;
 
 import cn.beijing.ssfh.entity.Enterprise;
 
+import java.util.List;
+
 public interface EnterpriseMapper {
     int deleteByPrimaryKey(Integer enterpriseId);
 
@@ -14,4 +16,6 @@ public interface EnterpriseMapper {
     int updateByPrimaryKeySelective(Enterprise record);
 
     int updateByPrimaryKey(Enterprise record);
+
+    List<Enterprise> listEnterprise();
 }

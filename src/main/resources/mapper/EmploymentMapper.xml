@@ -9,10 +9,11 @@
     <result column="jobs" property="jobs" jdbcType="VARCHAR" />
     <result column="salary" property="salary" jdbcType="VARCHAR" />
     <result column="work_address" property="workAddress" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" />
   </resultMap>
   <sql id="Base_Column_List" >
     employment_id, student_id, date_employment, employment_enterprise, jobs, salary, 
-    work_address
+    work_address,user_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,7 +21,10 @@
     from employment
     where employment_id = #{employmentId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="listEmploymemtAll" resultMap="BaseResultMap">
+      SELECT * from employment
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from employment
     where employment_id = #{employmentId,jdbcType=INTEGER}
   </delete>

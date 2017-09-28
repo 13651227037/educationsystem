@@ -15,6 +15,9 @@ public interface Userservice {
     Set<String> getPremissionsByUsername(String username);
 
     Tbuser loginByUsername(String username);
+
     Set<UserLoginVo> selectByUsername(String username);
+    
+    Tbuser addTbuser(Tbuser tbuser);
 
 }

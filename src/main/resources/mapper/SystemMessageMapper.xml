@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.SystemMessageMapper">
+    <resultMap id="systeMessageMap" type="SystemMessage">
+        <id property="id" column="id"></id>
+        <result property="userId" column="user_id"></result>
+        <result property="happenTime" column="happen_time"></result>
+        <result property="messageDetails" column="message_details"></result>
+        <result property="isRead" column="is_read"></result>
+    </resultMap>
+    <insert id="insertSystemMessage" parameterType="SystemMessage">
+        insert into system_message  values (null,#{userId},#{happenTime},#{messageDetails},#{isRead});
+    </insert>
+</mapper>

@@ -7,6 +7,16 @@ public class GraduationStudentVisitRecord {
 
     private Integer studentId;
 
+    @Override
+    public String toString() {
+        return "GraduationStudentVisitRecord{" +
+                "graduationStudentVisitRecordId=" + graduationStudentVisitRecordId +
+                ", studentId=" + studentId +
+                ", reviewContent='" + reviewContent + '\'' +
+                ", visitTime=" + visitTime +
+                '}';
+    }
+
     private String reviewContent;
 
     private Date visitTime;

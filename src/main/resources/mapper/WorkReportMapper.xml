@@ -23,6 +23,12 @@
     from work_report
     where work_report_id = #{workReportId,jdbcType=INTEGER}
   </select>
+  <select id="listWorkReport" resultMap="BaseResultMap">
+    SELECT * from work_report
+  </select>
+  <select id="selectByUserInfoIdAndNearByNow" resultMap="BaseResultMap" parameterType="Integer">
+    SELECT * from work_report where user_info_id =#{userInfoId}  order by work_report_date desc limit 1
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from work_report
     where work_report_id = #{workReportId,jdbcType=INTEGER}

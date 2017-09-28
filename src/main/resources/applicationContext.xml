@@ -112,6 +112,6 @@
     <import resource="classpath*:spring-shiro.xml"/>
 
 
-
+   <!-- <import resource="spring-job.xml"></import>-->
 
 </beans>

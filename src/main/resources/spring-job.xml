@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="systemMessageTask" class="cn.beijing.ssfh.quartz.ministory_employment.SystemMessageTask">
+</bean>
+    <bean id="systemMessageJobdetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="systemMessageTask">       </property>
+        <property name="targetMethod" value="addSystemMessage"></property>
+    </bean>
+    <bean id="systemMessageTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+            <property name="jobDetail" ref="systemMessageJobdetail"></property>
+            <property name="cronExpression">
+                <value> * * * * * ? *</value>
+            </property>
+
+    </bean>
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="systemMessageTrigger"></ref>
+            </list>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.TbuserTeacherMapper">
+    <resultMap id="tbuserTeacherMap" type="TbuserTeacher">
+        <id property="id" column="id"></id>
+        <result property="tbuserId" column="tbuser_id"></result>
+        <result property="teacherId" column="teacher_id"></result>
+    </resultMap>
+    <select id="selectByTeaherId" resultMap="tbuserTeacherMap" parameterType="Integer" >
+      SELECT  * from tbuser_teacher where teacher_id=#{teacherId} limit 1
+    </select>
+</mapper>

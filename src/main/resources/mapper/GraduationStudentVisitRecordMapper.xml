@@ -16,7 +16,10 @@
     from graduation_student_visit_record
     where graduation_student_visit_record_id = #{graduationStudentVisitRecordId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByStudentIdAndDateDesc" resultMap="BaseResultMap" parameterType="Integer">
+      select * from graduation_student_visit_record  where student_id=#{studentId} ORDER BY visit_time desc limit 1
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from graduation_student_visit_record
     where graduation_student_visit_record_id = #{graduationStudentVisitRecordId,jdbcType=INTEGER}
   </delete>

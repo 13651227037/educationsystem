@@ -13,6 +13,17 @@ public class EnterpriseMaintenanceInformationSheet {
 
     private String returnToTheContent;
 
+    @Override
+    public String toString() {
+        return "EnterpriseMaintenanceInformationSheet{" +
+                "enterpriseMaintenanceInformationSheetId=" + enterpriseMaintenanceInformationSheetId +
+                ", enterpriseId=" + enterpriseId +
+                ", timeOfReturnVisit=" + timeOfReturnVisit +
+                ", returnToThePerson='" + returnToThePerson + '\'' +
+                ", returnToTheContent='" + returnToTheContent + '\'' +
+                '}';
+    }
+
     public Integer getEnterpriseMaintenanceInformationSheetId() {
         return enterpriseMaintenanceInformationSheetId;
     }

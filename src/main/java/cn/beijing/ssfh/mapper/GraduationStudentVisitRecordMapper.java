@@ -14,4 +14,6 @@ public interface GraduationStudentVisitRecordMapper {
     int updateByPrimaryKeySelective(GraduationStudentVisitRecord record);
 
     int updateByPrimaryKey(GraduationStudentVisitRecord record);
+
+    GraduationStudentVisitRecord selectByStudentIdAndDateDesc(Integer studentId);
 }

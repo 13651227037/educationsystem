@@ -19,7 +19,10 @@
     from enterprise
     where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="listEnterprise" resultMap="BaseResultMap">
+      SELECT * from enterprise
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from enterprise
     where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
   </delete>

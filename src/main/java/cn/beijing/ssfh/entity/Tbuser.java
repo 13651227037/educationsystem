@@ -9,6 +9,16 @@ public class Tbuser {
 
     private String password;
 
+    @Override
+    public String toString() {
+        return "Tbuser{" +
+                "tbuserId=" + tbuserId +
+                ", userInfoId=" + userInfoId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
     public Integer getTbuserId() {
         return tbuserId;
     }

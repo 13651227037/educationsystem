@@ -5,6 +5,17 @@ public class Major {
 
     private String majorName;
 
+    public Major() {
+    }
+
+    @Override
+    public String toString() {
+        return "Major{" +
+                "majorId=" + majorId +
+                ", majorName='" + majorName + '\'' +
+                '}';
+    }
+
     public Integer getMajorId() {
         return majorId;
     }

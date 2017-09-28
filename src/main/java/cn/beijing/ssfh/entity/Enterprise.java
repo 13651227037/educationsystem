@@ -13,6 +13,18 @@ public class Enterprise {
 
     private String enterpriseIndustry;
 
+    @Override
+    public String toString() {
+        return "Enterprise{" +
+                "enterpriseId=" + enterpriseId +
+                ", addressId=" + addressId +
+                ", enterpriseName='" + enterpriseName + '\'' +
+                ", enterpriseScale='" + enterpriseScale + '\'' +
+                ", enterpriseNature='" + enterpriseNature + '\'' +
+                ", enterpriseIndustry='" + enterpriseIndustry + '\'' +
+                '}';
+    }
+
     public Integer getEnterpriseId() {
         return enterpriseId;
     }

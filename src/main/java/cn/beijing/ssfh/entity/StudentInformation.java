@@ -49,6 +49,43 @@ public class StudentInformation {
 
     private Integer studentState;
 
+    @Override
+    public String toString() {
+        return "StudentInformation{" +
+                "studentId=" + studentId +
+                ", addressId=" + addressId +
+                ", studentName='" + studentName + '\'' +
+                ", studentNum='" + studentNum + '\'' +
+                ", gender=" + gender +
+                ", nativePlace='" + nativePlace + '\'' +
+                ", homeAddress='" + homeAddress + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", email='" + email + '\'' +
+                ", documentType=" + documentType +
+                ", documentNumber='" + documentNumber + '\'' +
+                ", nation='" + nation + '\'' +
+                ", birthDate=" + birthDate +
+                ", age=" + age +
+                ", education='" + education + '\'' +
+                ", profession='" + profession + '\'' +
+                ", graduationDate=" + graduationDate +
+                ", parentsName='" + parentsName + '\'' +
+                ", parentsTel='" + parentsTel + '\'' +
+                ", emergencyContact='" + emergencyContact + '\'' +
+                ", emergencyContactTel='" + emergencyContactTel + '\'' +
+                ", householdRegistrationCode='" + householdRegistrationCode + '\'' +
+                ", studentState=" + studentState +
+                '}';
+    }
+
+    public Integer getStudentState() {
+        return studentState;
+    }
+
+    public void setStudentState(Integer studentState) {
+        this.studentState = studentState;
+    }
+
     public Integer getStudentId() {
         return studentId;
     }
@@ -70,7 +107,7 @@ public class StudentInformation {
     }
 
     public void setStudentName(String studentName) {
-        this.studentName = studentName == null ? null : studentName.trim();
+        this.studentName = studentName;
     }
 
     public String getStudentNum() {
@@ -78,7 +115,7 @@ public class StudentInformation {
     }
 
     public void setStudentNum(String studentNum) {
-        this.studentNum = studentNum == null ? null : studentNum.trim();
+        this.studentNum = studentNum;
     }
 
     public Integer getGender() {
@@ -94,7 +131,7 @@ public class StudentInformation {
     }
 
     public void setNativePlace(String nativePlace) {
-        this.nativePlace = nativePlace == null ? null : nativePlace.trim();
+        this.nativePlace = nativePlace;
     }
 
     public String getHomeAddress() {
@@ -102,7 +139,7 @@ public class StudentInformation {
     }
 
     public void setHomeAddress(String homeAddress) {
-        this.homeAddress = homeAddress == null ? null : homeAddress.trim();
+        this.homeAddress = homeAddress;
     }
 
     public String getTelephone() {
@@ -110,7 +147,7 @@ public class StudentInformation {
     }
 
     public void setTelephone(String telephone) {
-        this.telephone = telephone == null ? null : telephone.trim();
+        this.telephone = telephone;
     }
 
     public String getEmail() {
@@ -118,7 +155,7 @@ public class StudentInformation {
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+        this.email = email;
     }
 
     public Integer getDocumentType() {
@@ -134,7 +171,7 @@ public class StudentInformation {
     }
 
     public void setDocumentNumber(String documentNumber) {
-        this.documentNumber = documentNumber == null ? null : documentNumber.trim();
+        this.documentNumber = documentNumber;
     }
 
     public String getNation() {
@@ -142,7 +179,7 @@ public class StudentInformation {
     }
 
     public void setNation(String nation) {
-        this.nation = nation == null ? null : nation.trim();
+        this.nation = nation;
     }
 
     public Date getBirthDate() {
@@ -166,7 +203,7 @@ public class StudentInformation {
     }
 
     public void setEducation(String education) {
-        this.education = education == null ? null : education.trim();
+        this.education = education;
     }
 
     public String getProfession() {
@@ -174,7 +211,7 @@ public class StudentInformation {
     }
 
     public void setProfession(String profession) {
-        this.profession = profession == null ? null : profession.trim();
+        this.profession = profession;
     }
 
     public Date getGraduationDate() {
@@ -190,7 +227,7 @@ public class StudentInformation {
     }
 
     public void setParentsName(String parentsName) {
-        this.parentsName = parentsName == null ? null : parentsName.trim();
+        this.parentsName = parentsName;
     }
 
     public String getParentsTel() {
@@ -198,7 +235,7 @@ public class StudentInformation {
     }
 
     public void setParentsTel(String parentsTel) {
-        this.parentsTel = parentsTel == null ? null : parentsTel.trim();
+        this.parentsTel = parentsTel;
     }
 
     public String getEmergencyContact() {
@@ -206,7 +243,7 @@ public class StudentInformation {
     }
 
     public void setEmergencyContact(String emergencyContact) {
-        this.emergencyContact = emergencyContact == null ? null : emergencyContact.trim();
+        this.emergencyContact = emergencyContact;
     }
 
     public String getEmergencyContactTel() {
@@ -214,7 +251,7 @@ public class StudentInformation {
     }
 
     public void setEmergencyContactTel(String emergencyContactTel) {
-        this.emergencyContactTel = emergencyContactTel == null ? null : emergencyContactTel.trim();
+        this.emergencyContactTel = emergencyContactTel;
     }
 
     public String getHouseholdRegistrationCode() {
@@ -222,14 +259,37 @@ public class StudentInformation {
     }
 
     public void setHouseholdRegistrationCode(String householdRegistrationCode) {
-        this.householdRegistrationCode = householdRegistrationCode == null ? null : householdRegistrationCode.trim();
+        this.householdRegistrationCode = householdRegistrationCode;
     }
 
-    public Integer getStudentState() {
-        return studentState;
-    }
 
-    public void setStudentState(Integer studentState) {
+    public StudentInformation(Integer studentId, Integer addressId, String studentName, String studentNum, Integer gender, String nativePlace, String homeAddress, String telephone, String email, Integer documentType, String documentNumber, String nation, Date birthDate, Integer age, String education, String profession, Date graduationDate, String parentsName, String parentsTel, String emergencyContact, String emergencyContactTel, String householdRegistrationCode, Integer studentState) {
+        this.studentId = studentId;
+        this.addressId = addressId;
+        this.studentName = studentName;
+        this.studentNum = studentNum;
+        this.gender = gender;
+        this.nativePlace = nativePlace;
+        this.homeAddress = homeAddress;
+        this.telephone = telephone;
+        this.email = email;
+        this.documentType = documentType;
+        this.documentNumber = documentNumber;
+        this.nation = nation;
+        this.birthDate = birthDate;
+        this.age = age;
+        this.education = education;
+        this.profession = profession;
+        this.graduationDate = graduationDate;
+        this.parentsName = parentsName;
+        this.parentsTel = parentsTel;
+        this.emergencyContact = emergencyContact;
+        this.emergencyContactTel = emergencyContactTel;
+        this.householdRegistrationCode = householdRegistrationCode;
         this.studentState = studentState;
+    }
+
+    public StudentInformation() {
+
     }
 }

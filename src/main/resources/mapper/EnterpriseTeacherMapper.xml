@@ -15,7 +15,10 @@
     from enterprise_teacher
     where enterprise_teacher_id = #{enterpriseTeacherId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByEnterPriseId" resultMap="BaseResultMap">
+      SELECT * FROM  enterprise_teacher where enterprise_id=#{enterPriseid} limit 1;
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from enterprise_teacher
     where enterprise_teacher_id = #{enterpriseTeacherId,jdbcType=INTEGER}
   </delete>

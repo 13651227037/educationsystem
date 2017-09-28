@@ -1,6 +1,7 @@
 package cn.beijing.ssfh.mapper;
 
 import cn.beijing.ssfh.entity.Teacher;
+import cn.beijing.ssfh.entity.UserRole;
 
 public interface TeacherMapper {
     int deleteByPrimaryKey(Integer teacherId);
@@ -14,4 +15,6 @@ public interface TeacherMapper {
     int updateByPrimaryKeySelective(Teacher record);
 
     int updateByPrimaryKey(Teacher record);
+
+    UserRole getRoleUserByTeacherId(Integer teacherId);
 }

@@ -17,6 +17,8 @@ public class Employment {
 
     private String workAddress;
 
+    private Integer userId;
+
     public Integer getEmploymentId() {
         return employmentId;
     }
@@ -46,7 +48,7 @@ public class Employment {
     }
 
     public void setEmploymentEnterprise(String employmentEnterprise) {
-        this.employmentEnterprise = employmentEnterprise == null ? null : employmentEnterprise.trim();
+        this.employmentEnterprise = employmentEnterprise;
     }
 
     public String getJobs() {
@@ -54,7 +56,7 @@ public class Employment {
     }
 
     public void setJobs(String jobs) {
-        this.jobs = jobs == null ? null : jobs.trim();
+        this.jobs = jobs;
     }
 
     public String getSalary() {
@@ -62,7 +64,7 @@ public class Employment {
     }
 
     public void setSalary(String salary) {
-        this.salary = salary == null ? null : salary.trim();
+        this.salary = salary;
     }
 
     public String getWorkAddress() {
@@ -70,6 +72,43 @@ public class Employment {
     }
 
     public void setWorkAddress(String workAddress) {
-        this.workAddress = workAddress == null ? null : workAddress.trim();
+        this.workAddress = workAddress;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "Employment{" +
+                "employmentId=" + employmentId +
+                ", studentId=" + studentId +
+                ", dateEmployment=" + dateEmployment +
+                ", employmentEnterprise='" + employmentEnterprise + '\'' +
+                ", jobs='" + jobs + '\'' +
+                ", salary='" + salary + '\'' +
+                ", workAddress='" + workAddress + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
+
+    public Employment(Integer employmentId, Integer studentId, Date dateEmployment, String employmentEnterprise, String jobs, String salary, String workAddress, Integer userId) {
+        this.employmentId = employmentId;
+        this.studentId = studentId;
+        this.dateEmployment = dateEmployment;
+        this.employmentEnterprise = employmentEnterprise;
+        this.jobs = jobs;
+        this.salary = salary;
+        this.workAddress = workAddress;
+        this.userId = userId;
+    }
+
+    public Employment() {
+
     }
 }

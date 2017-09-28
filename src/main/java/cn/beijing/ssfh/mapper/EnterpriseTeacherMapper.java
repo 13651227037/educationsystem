@@ -14,4 +14,6 @@ public interface EnterpriseTeacherMapper {
     int updateByPrimaryKeySelective(EnterpriseTeacher record);
 
     int updateByPrimaryKey(EnterpriseTeacher record);
+
+    EnterpriseTeacher selectByEnterPriseId(Integer enterPriseid);
 }

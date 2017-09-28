@@ -106,6 +106,9 @@
 AND pre.`permissions_id`=rp.`permissions_id`
 AND tu.`username`=#{username}
   </select>
+  <insert id="addTbuser" parameterType="cn.beijing.ssfh.entity.Tbuser">
+    insert into tbuser (user_info_id, username, password) values (#{userInfoId},#{username},#{password})
+  </insert>
   <select id="getTbuserByUsername" parameterType="String" resultMap="BaseResultMap">
     select * from education_system.tbuser WHERE username=#{username};
   </select>
@@ -122,5 +125,14 @@ AND tu.`username`=#{username}
   AND rp.`role_id`=ur.`role_id`
   AND pre.`permissions_id`=rp.`permissions_id`
   AND tu.`username`=#{username}
+  </select>
+    <select id="listTbuser" resultMap="BaseResultMap">
+      select * FROM  tbuser
+    </select>
+  <select id="selectByUserInfoId" resultMap="BaseResultMap" parameterType="Integer">
+    SELECT * from tbuser WHERE  user_info_id=#{userInfoId}
+  </select>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="Integer">
+    select * from tbuser WHERE  tbuser_id=#{userId} limit 1
   </select>
 </mapper>

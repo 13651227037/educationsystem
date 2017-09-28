@@ -6,6 +6,7 @@ import cn.beijing.ssfh.entity.Tbuser;
 import cn.beijing.ssfh.mapper.TbuserMapper;
 import cn.beijing.ssfh.pojo.vo.UserLoginVo;
 import cn.beijing.ssfh.services.Userservice;
+import cn.beijing.ssfh.util.Md5Utils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -42,5 +43,11 @@ public class UserserviceImpl implements Userservice {
     @Override
     public Set<UserLoginVo> selectByUsername(String username) {
         return tbuserMapper.selectByUsername(username);
+    }
+
+    @Override
+    public Tbuser addTbuser(Tbuser tbuser) {
+        tbuser.setPassword(Md5Utils.encryptPassword(tbuser.getPassword()));
+        return tbuserMapper.addTbuser(tbuser);
     }
 }

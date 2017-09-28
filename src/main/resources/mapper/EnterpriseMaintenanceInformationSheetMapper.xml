@@ -18,7 +18,11 @@
     from enterprise_maintenance_information_sheet
     where enterprise_maintenance_information_sheet_id = #{enterpriseMaintenanceInformationSheetId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByEnterPriseIdNearByNow" resultMap="BaseResultMap" parameterType="Integer">
+      select * from enterprise_maintenance_information_sheet where enterprise_id=#{id} order by time_of_return_visit limit 1
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from enterprise_maintenance_information_sheet
     where enterprise_maintenance_information_sheet_id = #{enterpriseMaintenanceInformationSheetId,jdbcType=INTEGER}
   </delete>
