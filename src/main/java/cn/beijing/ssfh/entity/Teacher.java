@@ -9,12 +9,6 @@ public class Teacher {
 
     private String teacherName;
 
-    private Integer gender;
-
-    private String telephone;
-
-    private String email;
-
     private Integer teacherTeachAge;
 
     private String teacherMajor;
@@ -49,30 +43,6 @@ public class Teacher {
 
     public void setTeacherName(String teacherName) {
         this.teacherName = teacherName == null ? null : teacherName.trim();
-    }
-
-    public Integer getGender() {
-        return gender;
-    }
-
-    public void setGender(Integer gender) {
-        this.gender = gender;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone == null ? null : telephone.trim();
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
     }
 
     public Integer getTeacherTeachAge() {

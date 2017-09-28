@@ -2,7 +2,7 @@ import cn.beijing.ssfh.entity.DepartmentalRole;
 import cn.beijing.ssfh.entity.Tbuser;
 import cn.beijing.ssfh.entity.UserInfo;
 import cn.beijing.ssfh.entity.UserRole;
-import cn.beijing.ssfh.services.public_department.public_managerment.Userservice;
+import cn.beijing.ssfh.services.public_department.public_managerment.UserService;
 import org.junit.Test;
 
 import javax.annotation.Resource;
@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 public class AddUserTest extends BaseTest {
 
     @Resource
-    private Userservice userservice;
+    private UserService userService;
 
     @Test
     public void testAddUser() {
@@ -25,14 +25,14 @@ public class AddUserTest extends BaseTest {
         userInfo.setAge(999);
         UserRole userRole = new UserRole();
         DepartmentalRole departmentalRole = new DepartmentalRole();
-        System.out.println(userservice.insterTbuser(tbuser, userInfo,userRole,departmentalRole));
+        System.out.println(userService.insterTbuser(tbuser, userInfo,userRole,departmentalRole));
     }
 
     @Test
     public void testDeleteUser() {
         Tbuser tbuser = new Tbuser();
         tbuser.setTbuserId(2);
-        System.out.println(userservice.deleteTbuser(tbuser));
+        System.out.println(userService.deleteTbuser(tbuser));
     }
 
 }

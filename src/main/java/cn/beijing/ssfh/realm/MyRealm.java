@@ -1,7 +1,7 @@
 package cn.beijing.ssfh.realm;
 
 import cn.beijing.ssfh.entity.Tbuser;
-import cn.beijing.ssfh.services.public_department.public_managerment.Userservice;
+import cn.beijing.ssfh.services.public_department.public_managerment.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 public class MyRealm extends AuthorizingRealm {
     
     @Resource
-    private Userservice userservice;
+    private UserService userService;
 
     /**
     * @Description: 权限认证
@@ -29,13 +29,13 @@ public class MyRealm extends AuthorizingRealm {
 
         String username = String.valueOf(principalCollection.getPrimaryPrincipal());
         //通过登录时传来的username去数据库查询用户
-        Tbuser user = userservice.loginByUsername(username);
+        Tbuser user = userService.loginByUsername(username);
         //获取用户信息
         SimpleAuthorizationInfo  simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         //查询用户角色，授权角色
-        simpleAuthorizationInfo.setRoles(userservice.getRolesByUsername(username));
+        simpleAuthorizationInfo.setRoles(userService.getRolesByUsername(username));
         //查询用户权限，授权权限
-        simpleAuthorizationInfo.setStringPermissions(userservice.getPremissionsByUsername(username));
+        simpleAuthorizationInfo.setStringPermissions(userService.getPremissionsByUsername(username));
         return simpleAuthorizationInfo;
     }
 
@@ -52,7 +52,7 @@ public class MyRealm extends AuthorizingRealm {
         //取到用户名
         String username = String.valueOf(token.getPrincipal());
         //通过数据库查询用户
-        Tbuser user = userservice.loginByUsername(username);
+        Tbuser user = userService.loginByUsername(username);
         if ( user == null) {
             return  null;
         }

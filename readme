@@ -7,7 +7,7 @@
     4.抽象类命名使用 Abstract开始
     5.Boolean命名不要使用is前缀
     6.接口不要加public等修饰符，但一定要加上注释
-    7.A) Service/DAO 层方法命名规约
+    7.A) Service/controller 层方法命名规约
          1） 获取单个对象的方法用 get 做前缀。
          2） 获取多个对象的方法用 list 做前缀。
          3） 获取统计值的方法用 count 做前缀。

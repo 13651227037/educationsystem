@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * Created by Mr.W on 2017/9/24.
  */
-public interface Userservice {
+public interface UserService {
 
     Set<String> getRolesByUsername(String username);
 

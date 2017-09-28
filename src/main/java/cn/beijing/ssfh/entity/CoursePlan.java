@@ -7,7 +7,7 @@ public class CoursePlan {
 
     private Integer chapterId;
 
-    private Integer schedule;
+    private Integer schedules;
 
     public Integer getCoursePlanId() {
         return coursePlanId;
@@ -33,11 +33,11 @@ public class CoursePlan {
         this.chapterId = chapterId;
     }
 
-    public Integer getSchedule() {
-        return schedule;
+    public Integer getSchedules() {
+        return schedules;
     }
 
-    public void setSchedule(Integer schedule) {
-        this.schedule = schedule;
+    public void setSchedules(Integer schedules) {
+        this.schedules = schedules;
     }
 }

@@ -6,9 +6,10 @@
     <result column="study_parts_id" property="studyPartsId" jdbcType="INTEGER" />
     <result column="chapter_name" property="chapterName" jdbcType="VARCHAR" />
     <result column="chapter_duration" property="chapterDuration" jdbcType="INTEGER" />
+    <result column="child_id" property="childId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    chapter_id, study_parts_id, chapter_name, chapter_duration
+    chapter_id, study_parts_id, chapter_name, chapter_duration, child_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,9 +23,9 @@
   </delete>
   <insert id="insert" parameterType="cn.beijing.ssfh.entity.Chapter" >
     insert into chapter (chapter_id, study_parts_id, chapter_name, 
-      chapter_duration)
+      chapter_duration, child_id)
     values (#{chapterId,jdbcType=INTEGER}, #{studyPartsId,jdbcType=INTEGER}, #{chapterName,jdbcType=VARCHAR}, 
-      #{chapterDuration,jdbcType=INTEGER})
+      #{chapterDuration,jdbcType=INTEGER}, #{childId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.Chapter" >
     insert into chapter
@@ -41,6 +42,9 @@
       <if test="chapterDuration != null" >
         chapter_duration,
       </if>
+      <if test="childId != null" >
+        child_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="chapterId != null" >
@@ -54,6 +58,9 @@
       </if>
       <if test="chapterDuration != null" >
         #{chapterDuration,jdbcType=INTEGER},
+      </if>
+      <if test="childId != null" >
+        #{childId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -69,6 +76,9 @@
       <if test="chapterDuration != null" >
         chapter_duration = #{chapterDuration,jdbcType=INTEGER},
       </if>
+      <if test="childId != null" >
+        child_id = #{childId,jdbcType=INTEGER},
+      </if>
     </set>
     where chapter_id = #{chapterId,jdbcType=INTEGER}
   </update>
@@ -76,7 +86,8 @@
     update chapter
     set study_parts_id = #{studyPartsId,jdbcType=INTEGER},
       chapter_name = #{chapterName,jdbcType=VARCHAR},
-      chapter_duration = #{chapterDuration,jdbcType=INTEGER}
+      chapter_duration = #{chapterDuration,jdbcType=INTEGER},
+      child_id = #{childId,jdbcType=INTEGER}
     where chapter_id = #{chapterId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -6,15 +6,11 @@
     <result column="state_id" property="stateId" jdbcType="INTEGER" />
     <result column="user_role_id" property="userRoleId" jdbcType="INTEGER" />
     <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
-    <result column="gender" property="gender" jdbcType="INTEGER" />
-    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="teacher_teach_age" property="teacherTeachAge" jdbcType="INTEGER" />
     <result column="teacher_major" property="teacherMajor" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    teacher_id, state_id, user_role_id, teacher_name, gender, telephone, email, teacher_teach_age, 
-    teacher_major
+    teacher_id, state_id, user_role_id, teacher_name, teacher_teach_age, teacher_major
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -28,12 +24,10 @@
   </delete>
   <insert id="insert" parameterType="cn.beijing.ssfh.entity.Teacher" >
     insert into teacher (teacher_id, state_id, user_role_id, 
-      teacher_name, gender, telephone, 
-      email, teacher_teach_age, teacher_major
+      teacher_name, teacher_teach_age, teacher_major
       )
     values (#{teacherId,jdbcType=INTEGER}, #{stateId,jdbcType=INTEGER}, #{userRoleId,jdbcType=INTEGER}, 
-      #{teacherName,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{telephone,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{teacherTeachAge,jdbcType=INTEGER}, #{teacherMajor,jdbcType=VARCHAR}
+      #{teacherName,jdbcType=VARCHAR}, #{teacherTeachAge,jdbcType=INTEGER}, #{teacherMajor,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.Teacher" >
@@ -50,15 +44,6 @@
       </if>
       <if test="teacherName != null" >
         teacher_name,
-      </if>
-      <if test="gender != null" >
-        gender,
-      </if>
-      <if test="telephone != null" >
-        telephone,
-      </if>
-      <if test="email != null" >
-        email,
       </if>
       <if test="teacherTeachAge != null" >
         teacher_teach_age,
@@ -80,15 +65,6 @@
       <if test="teacherName != null" >
         #{teacherName,jdbcType=VARCHAR},
       </if>
-      <if test="gender != null" >
-        #{gender,jdbcType=INTEGER},
-      </if>
-      <if test="telephone != null" >
-        #{telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
-      </if>
       <if test="teacherTeachAge != null" >
         #{teacherTeachAge,jdbcType=INTEGER},
       </if>
@@ -109,15 +85,6 @@
       <if test="teacherName != null" >
         teacher_name = #{teacherName,jdbcType=VARCHAR},
       </if>
-      <if test="gender != null" >
-        gender = #{gender,jdbcType=INTEGER},
-      </if>
-      <if test="telephone != null" >
-        telephone = #{telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
-      </if>
       <if test="teacherTeachAge != null" >
         teacher_teach_age = #{teacherTeachAge,jdbcType=INTEGER},
       </if>
@@ -132,9 +99,6 @@
     set state_id = #{stateId,jdbcType=INTEGER},
       user_role_id = #{userRoleId,jdbcType=INTEGER},
       teacher_name = #{teacherName,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=INTEGER},
-      telephone = #{telephone,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
       teacher_teach_age = #{teacherTeachAge,jdbcType=INTEGER},
       teacher_major = #{teacherMajor,jdbcType=VARCHAR}
     where teacher_id = #{teacherId,jdbcType=INTEGER}

@@ -9,6 +9,8 @@ public class Chapter {
 
     private Integer chapterDuration;
 
+    private Integer childId;
+
     public Integer getChapterId() {
         return chapterId;
     }
@@ -39,5 +41,13 @@ public class Chapter {
 
     public void setChapterDuration(Integer chapterDuration) {
         this.chapterDuration = chapterDuration;
+    }
+
+    public Integer getChildId() {
+        return childId;
+    }
+
+    public void setChildId(Integer childId) {
+        this.childId = childId;
     }
 }

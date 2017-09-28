@@ -67,6 +67,11 @@
                         员工信息管理
                     </a>
                 </li>
+                <li style="list-style-type:none;">
+                    <a href="#" url="${pageContext.request.contextPath}/tbuserInfo/toupdateTbuserInfo.controller">
+                        账号安全
+                    </a>
+                </li>
             </ul>
 
         </div>

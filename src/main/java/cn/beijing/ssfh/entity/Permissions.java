@@ -5,6 +5,8 @@ public class Permissions {
 
     private String permissionsName;
 
+    private String details;
+
     public Integer getPermissionsId() {
         return permissionsId;
     }
@@ -19,5 +21,13 @@ public class Permissions {
 
     public void setPermissionsName(String permissionsName) {
         this.permissionsName = permissionsName == null ? null : permissionsName.trim();
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details == null ? null : details.trim();
     }
 }

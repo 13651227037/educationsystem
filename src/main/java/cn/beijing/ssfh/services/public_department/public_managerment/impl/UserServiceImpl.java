@@ -11,7 +11,7 @@ import cn.beijing.ssfh.mapper.TbuserMapper;
 import cn.beijing.ssfh.mapper.UserInfoMapper;
 import cn.beijing.ssfh.mapper.UserRoleMapper;
 import cn.beijing.ssfh.pojo.vo.UserLoginVo;
-import cn.beijing.ssfh.services.public_department.public_managerment.Userservice;
+import cn.beijing.ssfh.services.public_department.public_managerment.UserService;
 import cn.beijing.ssfh.util.Md5Utils;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ import java.util.Set;
  * Created by Mr.W on 2017/9/24.
  */
 @Service
-public class UserserviceImpl implements Userservice {
+public class UserServiceImpl implements UserService {
 
     @Resource
     private UserInfoMapper userInfoMapper;

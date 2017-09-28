@@ -1,7 +1,7 @@
 package cn.beijing.ssfh.controller.public_department.public_managerment;
 
 import cn.beijing.ssfh.entity.Tbuser;
-import cn.beijing.ssfh.services.public_department.public_managerment.Userservice;
+import cn.beijing.ssfh.services.public_department.public_managerment.UserService;
 import cn.beijing.ssfh.util.Message;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -26,7 +26,7 @@ import javax.annotation.Resource;
 public class LoginController {
 
     @Resource
-    private Userservice userservice;
+    private UserService userService;
         /**
         * @Description: 登陆验证
         * @Author Mr.W
@@ -41,7 +41,7 @@ public class LoginController {
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(token);
-            subject.getSession().setAttribute("userInfo", userservice.loginByUsername(token.getUsername()));
+            subject.getSession().setAttribute("userInfo", userService.loginByUsername(token.getUsername()));
         } catch (UnknownAccountException ex) {
             model.addAttribute(Message.unknown());
             return "login";

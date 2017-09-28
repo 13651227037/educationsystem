@@ -4,9 +4,10 @@
   <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.Permissions" >
     <id column="permissions_id" property="permissionsId" jdbcType="INTEGER" />
     <result column="permissions_name" property="permissionsName" jdbcType="VARCHAR" />
+    <result column="details" property="details" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    permissions_id, permissions_name
+    permissions_id, permissions_name, details
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,8 +20,10 @@
     where permissions_id = #{permissionsId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.beijing.ssfh.entity.Permissions" >
-    insert into permissions (permissions_id, permissions_name)
-    values (#{permissionsId,jdbcType=INTEGER}, #{permissionsName,jdbcType=VARCHAR})
+    insert into permissions (permissions_id, permissions_name, details
+      )
+    values (#{permissionsId,jdbcType=INTEGER}, #{permissionsName,jdbcType=VARCHAR}, #{details,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.Permissions" >
     insert into permissions
@@ -31,6 +34,9 @@
       <if test="permissionsName != null" >
         permissions_name,
       </if>
+      <if test="details != null" >
+        details,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="permissionsId != null" >
@@ -38,6 +44,9 @@
       </if>
       <if test="permissionsName != null" >
         #{permissionsName,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        #{details,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -47,12 +56,16 @@
       <if test="permissionsName != null" >
         permissions_name = #{permissionsName,jdbcType=VARCHAR},
       </if>
+      <if test="details != null" >
+        details = #{details,jdbcType=VARCHAR},
+      </if>
     </set>
     where permissions_id = #{permissionsId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.Permissions" >
     update permissions
-    set permissions_name = #{permissionsName,jdbcType=VARCHAR}
+    set permissions_name = #{permissionsName,jdbcType=VARCHAR},
+      details = #{details,jdbcType=VARCHAR}
     where permissions_id = #{permissionsId,jdbcType=INTEGER}
   </update>
 </mapper>

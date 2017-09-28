@@ -5,8 +5,6 @@ import java.util.Date;
 public class TestPaper {
     private Integer testPaperId;
 
-    private Integer pathId;
-
     private Integer teacherId;
 
     private String testPaperUrl;
@@ -23,14 +21,6 @@ public class TestPaper {
 
     public void setTestPaperId(Integer testPaperId) {
         this.testPaperId = testPaperId;
-    }
-
-    public Integer getPathId() {
-        return pathId;
-    }
-
-    public void setPathId(Integer pathId) {
-        this.pathId = pathId;
     }
 
     public Integer getTeacherId() {
