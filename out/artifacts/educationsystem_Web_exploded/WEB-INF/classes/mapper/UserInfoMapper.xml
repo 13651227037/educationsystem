@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.UserInfo" >
+    <id column="user_info_id" property="userInfoId" jdbcType="INTEGER" />
+    <result column="address_id" property="addressId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="employee_num" property="employeeNum" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="INTEGER" />
+    <result column="native_place" property="nativePlace" jdbcType="VARCHAR" />
+    <result column="home_address" property="homeAddress" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="document_type" property="documentType" jdbcType="INTEGER" />
+    <result column="document_number" property="documentNumber" jdbcType="VARCHAR" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="birth_date" property="birthDate" jdbcType="DATE" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="education" property="education" jdbcType="VARCHAR" />
+    <result column="professiona" property="professiona" jdbcType="VARCHAR" />
+    <result column="emergency_contact" property="emergencyContact" jdbcType="VARCHAR" />
+    <result column="emergency_contact_phone" property="emergencyContactPhone" jdbcType="VARCHAR" />
+    <result column="home_address_code" property="homeAddressCode" jdbcType="VARCHAR" />
+    <result column="household_registration_code" property="householdRegistrationCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_info_id, address_id, name, employee_num, gender, native_place, home_address, 
+    telephone, email, document_type, document_number, nation, birth_date, age, education, 
+    professiona, emergency_contact, emergency_contact_phone, home_address_code, household_registration_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where user_info_id = #{userInfoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_info
+    where user_info_id = #{userInfoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.UserInfo" useGeneratedKeys="true" keyProperty="userInfoId">
+    insert into user_info (user_info_id, address_id, name, 
+      employee_num, gender, native_place, 
+      home_address, telephone, email, 
+      document_type, document_number, nation, 
+      birth_date, age, education, 
+      professiona, emergency_contact, emergency_contact_phone, 
+      home_address_code, household_registration_code
+      )
+    values (#{userInfoId,jdbcType=INTEGER}, #{addressId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{employeeNum,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{nativePlace,jdbcType=VARCHAR}, 
+      #{homeAddress,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{documentType,jdbcType=INTEGER}, #{documentNumber,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, 
+      #{birthDate,jdbcType=DATE}, #{age,jdbcType=INTEGER}, #{education,jdbcType=VARCHAR}, 
+      #{professiona,jdbcType=VARCHAR}, #{emergencyContact,jdbcType=VARCHAR}, #{emergencyContactPhone,jdbcType=VARCHAR}, 
+      #{homeAddressCode,jdbcType=VARCHAR}, #{householdRegistrationCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.UserInfo" useGeneratedKeys="true" keyProperty="userInfoId">
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userInfoId != null" >
+        user_info_id,
+      </if>
+      <if test="addressId != null" >
+        address_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="employeeNum != null" >
+        employee_num,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="nativePlace != null" >
+        native_place,
+      </if>
+      <if test="homeAddress != null" >
+        home_address,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="documentType != null" >
+        document_type,
+      </if>
+      <if test="documentNumber != null" >
+        document_number,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="birthDate != null" >
+        birth_date,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="professiona != null" >
+        professiona,
+      </if>
+      <if test="emergencyContact != null" >
+        emergency_contact,
+      </if>
+      <if test="emergencyContactPhone != null" >
+        emergency_contact_phone,
+      </if>
+      <if test="homeAddressCode != null" >
+        home_address_code,
+      </if>
+      <if test="householdRegistrationCode != null" >
+        household_registration_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userInfoId != null" >
+        #{userInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="addressId != null" >
+        #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeNum != null" >
+        #{employeeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="nativePlace != null" >
+        #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddress != null" >
+        #{homeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="documentType != null" >
+        #{documentType,jdbcType=INTEGER},
+      </if>
+      <if test="documentNumber != null" >
+        #{documentNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null" >
+        #{birthDate,jdbcType=DATE},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="professiona != null" >
+        #{professiona,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContact != null" >
+        #{emergencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactPhone != null" >
+        #{emergencyContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddressCode != null" >
+        #{homeAddressCode,jdbcType=VARCHAR},
+      </if>
+      <if test="householdRegistrationCode != null" >
+        #{householdRegistrationCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.UserInfo" >
+    update user_info
+    <set >
+      <if test="addressId != null" >
+        address_id = #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeNum != null" >
+        employee_num = #{employeeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="nativePlace != null" >
+        native_place = #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddress != null" >
+        home_address = #{homeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="documentType != null" >
+        document_type = #{documentType,jdbcType=INTEGER},
+      </if>
+      <if test="documentNumber != null" >
+        document_number = #{documentNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null" >
+        birth_date = #{birthDate,jdbcType=DATE},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="professiona != null" >
+        professiona = #{professiona,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContact != null" >
+        emergency_contact = #{emergencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactPhone != null" >
+        emergency_contact_phone = #{emergencyContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddressCode != null" >
+        home_address_code = #{homeAddressCode,jdbcType=VARCHAR},
+      </if>
+      <if test="householdRegistrationCode != null" >
+        household_registration_code = #{householdRegistrationCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_info_id = #{userInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.UserInfo" >
+    update user_info
+    set address_id = #{addressId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      employee_num = #{employeeNum,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
+      home_address = #{homeAddress,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      document_type = #{documentType,jdbcType=INTEGER},
+      document_number = #{documentNumber,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      birth_date = #{birthDate,jdbcType=DATE},
+      age = #{age,jdbcType=INTEGER},
+      education = #{education,jdbcType=VARCHAR},
+      professiona = #{professiona,jdbcType=VARCHAR},
+      emergency_contact = #{emergencyContact,jdbcType=VARCHAR},
+      emergency_contact_phone = #{emergencyContactPhone,jdbcType=VARCHAR},
+      home_address_code = #{homeAddressCode,jdbcType=VARCHAR},
+      household_registration_code = #{householdRegistrationCode,jdbcType=VARCHAR}
+    where user_info_id = #{userInfoId,jdbcType=INTEGER}
+  </update>
+</mapper>

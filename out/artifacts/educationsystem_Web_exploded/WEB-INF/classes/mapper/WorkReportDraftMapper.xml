@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.WorkReportDraftMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.WorkReportDraft" >
+    <id column="work_report_draft_id" property="workReportDraftId" jdbcType="INTEGER" />
+    <result column="user_info_id" property="userInfoId" jdbcType="INTEGER" />
+    <result column="tomorrow_work_plan" property="tomorrowWorkPlan" jdbcType="VARCHAR" />
+    <result column="work_report_content" property="workReportContent" jdbcType="VARCHAR" />
+    <result column="work_report_date" property="workReportDate" jdbcType="DATE" />
+    <result column="working_experience" property="workingExperience" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    work_report_draft_id, user_info_id, tomorrow_work_plan, work_report_content, work_report_date, 
+    working_experience
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from work_report_draft
+    where work_report_draft_id = #{workReportDraftId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from work_report_draft
+    where work_report_draft_id = #{workReportDraftId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.WorkReportDraft" >
+    insert into work_report_draft (work_report_draft_id, user_info_id, tomorrow_work_plan, 
+      work_report_content, work_report_date, working_experience
+      )
+    values (#{workReportDraftId,jdbcType=INTEGER}, #{userInfoId,jdbcType=INTEGER}, #{tomorrowWorkPlan,jdbcType=VARCHAR}, 
+      #{workReportContent,jdbcType=VARCHAR}, #{workReportDate,jdbcType=DATE}, #{workingExperience,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.WorkReportDraft" >
+    insert into work_report_draft
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workReportDraftId != null" >
+        work_report_draft_id,
+      </if>
+      <if test="userInfoId != null" >
+        user_info_id,
+      </if>
+      <if test="tomorrowWorkPlan != null" >
+        tomorrow_work_plan,
+      </if>
+      <if test="workReportContent != null" >
+        work_report_content,
+      </if>
+      <if test="workReportDate != null" >
+        work_report_date,
+      </if>
+      <if test="workingExperience != null" >
+        working_experience,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workReportDraftId != null" >
+        #{workReportDraftId,jdbcType=INTEGER},
+      </if>
+      <if test="userInfoId != null" >
+        #{userInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="tomorrowWorkPlan != null" >
+        #{tomorrowWorkPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="workReportContent != null" >
+        #{workReportContent,jdbcType=VARCHAR},
+      </if>
+      <if test="workReportDate != null" >
+        #{workReportDate,jdbcType=DATE},
+      </if>
+      <if test="workingExperience != null" >
+        #{workingExperience,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.WorkReportDraft" >
+    update work_report_draft
+    <set >
+      <if test="userInfoId != null" >
+        user_info_id = #{userInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="tomorrowWorkPlan != null" >
+        tomorrow_work_plan = #{tomorrowWorkPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="workReportContent != null" >
+        work_report_content = #{workReportContent,jdbcType=VARCHAR},
+      </if>
+      <if test="workReportDate != null" >
+        work_report_date = #{workReportDate,jdbcType=DATE},
+      </if>
+      <if test="workingExperience != null" >
+        working_experience = #{workingExperience,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where work_report_draft_id = #{workReportDraftId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.WorkReportDraft" >
+    update work_report_draft
+    set user_info_id = #{userInfoId,jdbcType=INTEGER},
+      tomorrow_work_plan = #{tomorrowWorkPlan,jdbcType=VARCHAR},
+      work_report_content = #{workReportContent,jdbcType=VARCHAR},
+      work_report_date = #{workReportDate,jdbcType=DATE},
+      working_experience = #{workingExperience,jdbcType=VARCHAR}
+    where work_report_draft_id = #{workReportDraftId,jdbcType=INTEGER}
+  </update>
+</mapper>

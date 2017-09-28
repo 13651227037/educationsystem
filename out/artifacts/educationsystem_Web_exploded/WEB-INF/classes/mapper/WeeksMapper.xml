@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.beijing.ssfh.mapper.WeeksMapper" >
+  <resultMap id="BaseResultMap" type="cn.beijing.ssfh.entity.Weeks" >
+    <id column="week_id" property="weekId" jdbcType="INTEGER" />
+    <result column="week_name" property="weekName" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    week_id, week_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from weeks
+    where week_id = #{weekId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from weeks
+    where week_id = #{weekId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.Weeks" >
+    insert into weeks (week_id, week_name)
+    values (#{weekId,jdbcType=INTEGER}, #{weekName,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.Weeks" >
+    insert into weeks
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="weekId != null" >
+        week_id,
+      </if>
+      <if test="weekName != null" >
+        week_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="weekId != null" >
+        #{weekId,jdbcType=INTEGER},
+      </if>
+      <if test="weekName != null" >
+        #{weekName,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.beijing.ssfh.entity.Weeks" >
+    update weeks
+    <set >
+      <if test="weekName != null" >
+        week_name = #{weekName,jdbcType=INTEGER},
+      </if>
+    </set>
+    where week_id = #{weekId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.beijing.ssfh.entity.Weeks" >
+    update weeks
+    set week_name = #{weekName,jdbcType=INTEGER}
+    where week_id = #{weekId,jdbcType=INTEGER}
+  </update>
+</mapper>

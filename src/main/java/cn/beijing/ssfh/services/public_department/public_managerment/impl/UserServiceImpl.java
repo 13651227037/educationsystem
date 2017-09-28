@@ -1,7 +1,6 @@
 package cn.beijing.ssfh.services.public_department.public_managerment.impl;
 
 
-
 import cn.beijing.ssfh.entity.DepartmentalRole;
 import cn.beijing.ssfh.entity.Tbuser;
 import cn.beijing.ssfh.entity.UserInfo;
@@ -62,7 +61,7 @@ public class UserServiceImpl implements UserService {
     * @version V1.0
     */
     @Override
-    public int insterTbuser(Tbuser tbuser, UserInfo userInfo, UserRole userRole, DepartmentalRole departmentalRole) {
+    public int insertTbuser(Tbuser tbuser, UserInfo userInfo, UserRole userRole, DepartmentalRole departmentalRole) {
         Integer number_1 = userInfoMapper.insert(userInfo);
         System.out.println(userInfo.getUserInfoId());
         tbuser.setPassword(Md5Utils.encryptPassword(tbuser.getPassword()));

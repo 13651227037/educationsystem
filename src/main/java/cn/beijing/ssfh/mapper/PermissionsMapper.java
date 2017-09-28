@@ -1,17 +1,17 @@
 package cn.beijing.ssfh.mapper;
 
-import cn.beijing.ssfh.entity.Permissions;
+import cn.beijing.ssfh.entity.Premissions;
 
 public interface PermissionsMapper {
     int deleteByPrimaryKey(Integer permissionsId);
 
-    int insert(Permissions record);
+    int insert(Premissions record);
 
-    int insertSelective(Permissions record);
+    int insertSelective(Premissions record);
 
-    Permissions selectByPrimaryKey(Integer permissionsId);
+    Premissions selectByPrimaryKey(Integer permissionsId);
 
-    int updateByPrimaryKeySelective(Permissions record);
+    int updateByPrimaryKeySelective(Premissions record);
 
-    int updateByPrimaryKey(Permissions record);
+    int updateByPrimaryKey(Premissions record);
 }
