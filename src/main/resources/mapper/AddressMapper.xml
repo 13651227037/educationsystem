@@ -9,6 +9,7 @@
     <result column="address_level" property="addressLevel" jdbcType="VARCHAR" />
     <result column="parent_id" property="parentId" jdbcType="INTEGER" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
     address_id, address_name, address_code, address_type, address_level, parent_id
   </sql>
