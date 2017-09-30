@@ -7,6 +7,8 @@ public interface CourseTablesMapper {
 
     int insert(CourseTables record);
 
+    int insertCourseTable(CourseTables courseTables);
+
     int insertSelective(CourseTables record);
 
     CourseTables selectByPrimaryKey(Integer courseTablesId);
