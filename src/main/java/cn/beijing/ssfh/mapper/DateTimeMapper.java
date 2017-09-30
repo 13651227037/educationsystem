@@ -2,6 +2,8 @@ package cn.beijing.ssfh.mapper;
 
 import cn.beijing.ssfh.entity.DateTime;
 
+import java.util.Date;
+
 public interface DateTimeMapper {
     int deleteByPrimaryKey(Integer dateTimeId);
 
@@ -14,4 +16,7 @@ public interface DateTimeMapper {
     int updateByPrimaryKeySelective(DateTime record);
 
     int updateByPrimaryKey(DateTime record);
+
+    DateTime selectByDate(Date date);
+    Integer updateStateByDate(DateTime date);
 }

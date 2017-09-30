@@ -69,4 +69,18 @@
     where date_time_id = #{dateTimeId,jdbcType=INTEGER}
   </update>
 
+  <!--按日期查询-->
+  <select id="selectByDate" resultMap="BaseResultMap" parameterType="Date" >
+    select
+    <include refid="Base_Column_List" />
+    from date_time
+    where date_time = #{dateTime,jdbcType=DATE}
+  </select>
+  <!--按日期修改状态-->
+  <update id="updateStateByDate" parameterType="cn.beijing.ssfh.entity.DateTime">
+    UPDATE date_time
+    SET date_state=#{dateState}
+    WHERE date_time=#{dateTime}
+  </update>
+
 </mapper>

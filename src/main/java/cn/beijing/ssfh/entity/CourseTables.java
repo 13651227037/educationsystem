@@ -11,7 +11,7 @@ public class CourseTables {
 
     private Integer dateTimeId;
 
-    private String teacherName;
+    private Integer teacherId;
 
     private String chapterName;
 
@@ -55,12 +55,25 @@ public class CourseTables {
         this.dateTimeId = dateTimeId;
     }
 
-    public String getTeacherName() {
-        return teacherName;
+    @Override
+    public String toString() {
+        return "CourseTables{" +
+                "courseTablesId=" + courseTablesId +
+                ", dayTimeId=" + dayTimeId +
+                ", classroomId=" + classroomId +
+                ", gradeId=" + gradeId +
+                ", dateTimeId=" + dateTimeId +
+                ", teacherId='" + teacherId + '\'' +
+                ", chapterName='" + chapterName + '\'' +
+                '}';
     }
 
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName == null ? null : teacherName.trim();
+    public Integer getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
     }
 
     public String getChapterName() {
