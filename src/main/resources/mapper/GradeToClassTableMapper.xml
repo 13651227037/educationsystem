@@ -3,7 +3,7 @@
 
 <mapper namespace="cn.beijing.ssfh.mapper.GradeToClassTableMapper">
 
-    <resultMap id="GradeToClassTableMap" type="cn.beijing.ssfh.entity.GradeToClassTableVO">
+    <resultMap id="GradeToClassTableMap" type="cn.beijing.ssfh.pojo.vo.GradeToClassTableVO">
         <id property="gradeId" column="grade_id"></id>
         <result property="weekName" column="week_name"></result>
         <result property="timePart" column="time_part"></result>

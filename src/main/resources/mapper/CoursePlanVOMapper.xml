@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="cn.beijing.ssfh.mapper.CoursePlanVOMapper">
-    <resultMap id="coursePlanVOMap" type="cn.beijing.ssfh.entity.CoursePlanVO">
+    <resultMap id="coursePlanVOMap" type="cn.beijing.ssfh.pojo.vo.CoursePlanVO">
         <id property="gradeId" column="grade_id"></id>
         <result property="schedules" column="schedule"></result>
         <result property="chapterDuration" column="chapter_duration"></result>
@@ -17,7 +17,7 @@
         AND c.`chapter_id`=cp.`chapter_id`
         AND g.`grade_id`=#{gradeId}
     </select>
-    <update id="updateCoursePlan" parameterType="cn.beijing.ssfh.entity.CoursePlanVO">
+    <update id="updateCoursePlan" parameterType="cn.beijing.ssfh.pojo.vo.CoursePlanVO">
         UPDATE course_plan
         SET chapter_id=#{chapterId},schedules=#{schedules}
         WHERE grade_id=#{gradeId}

@@ -39,6 +39,7 @@ public class TestClassTable {
         System.out.println(classTableServices.saveNextWeekDateTime(list));
     }
 
+
     @Test
     public void testSaveClassTable() {
         System.out.println(classTableServices.saveClassTable());

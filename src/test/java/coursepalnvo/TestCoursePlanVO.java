@@ -1,6 +1,6 @@
 package coursepalnvo;
 
-import cn.beijing.ssfh.entity.CoursePlanVO;
+import cn.beijing.ssfh.pojo.vo.CoursePlanVO;
 import cn.beijing.ssfh.mapper.CoursePlanVOMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;

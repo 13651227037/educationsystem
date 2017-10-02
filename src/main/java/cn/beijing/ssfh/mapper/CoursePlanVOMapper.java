@@ -1,6 +1,6 @@
 package cn.beijing.ssfh.mapper;
 
-import cn.beijing.ssfh.entity.CoursePlanVO;
+import cn.beijing.ssfh.pojo.vo.CoursePlanVO;
 
 /**
  * Created by Administrator on 2017/9/27 0027.

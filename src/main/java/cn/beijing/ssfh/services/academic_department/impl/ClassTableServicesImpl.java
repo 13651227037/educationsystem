@@ -1,9 +1,9 @@
 package cn.beijing.ssfh.services.academic_department.impl;
 
-import cn.beijing.ssfh.entity.CoursePlanVO;
+import cn.beijing.ssfh.pojo.vo.CoursePlanVO;
 import cn.beijing.ssfh.entity.CourseTables;
 import cn.beijing.ssfh.entity.DateTime;
-import cn.beijing.ssfh.entity.GradeToClassTableVO;
+import cn.beijing.ssfh.pojo.vo.GradeToClassTableVO;
 import cn.beijing.ssfh.mapper.CoursePlanVOMapper;
 import cn.beijing.ssfh.mapper.CourseTablesMapper;
 import cn.beijing.ssfh.mapper.DateTimeMapper;
@@ -40,7 +40,7 @@ public class ClassTableServicesImpl implements ClassTableServices {
         //去除假期排课
         for(int dateIndex=1;dateIndex<8;dateIndex++) {
             DateTime dateTime=dateTimeMapper.selectByDate(calendar.getTime());
-            if (dateTime.getDateState() != 1) {
+            if (1 != dateTime.getDateState()) {
                 Iterator<GradeToClassTableVO> it=list.iterator();
                 while (it.hasNext()) {
                     GradeToClassTableVO gradeToClassTableVO=it.next();

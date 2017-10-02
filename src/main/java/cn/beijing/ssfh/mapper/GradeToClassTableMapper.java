@@ -1,6 +1,6 @@
 package cn.beijing.ssfh.mapper;
 
-import cn.beijing.ssfh.entity.GradeToClassTableVO;
+import cn.beijing.ssfh.pojo.vo.GradeToClassTableVO;
 
 import java.util.List;
 

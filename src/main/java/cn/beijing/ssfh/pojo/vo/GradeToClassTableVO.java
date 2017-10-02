@@ -1,4 +1,4 @@
-package cn.beijing.ssfh.entity;
+package cn.beijing.ssfh.pojo.vo;
 
 /**
  * Created by Administrator on 2017/9/25 0025.
