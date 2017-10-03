@@ -19,7 +19,7 @@
     delete from user_role
     where user_role_id = #{userRoleId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.beijing.ssfh.entity.UserRole" >
+  <insert id="insert" parameterType="cn.beijing.ssfh.entity.UserRole" useGeneratedKeys="true" keyProperty="userRoleId" >
     insert into user_role (user_role_id, tbuser_id, role_id
       )
     values (#{userRoleId,jdbcType=INTEGER}, #{tbuserId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}

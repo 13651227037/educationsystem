@@ -69,37 +69,43 @@
         <result property="homeAddressCode" column="home_address_code"/>
         <result property="householdRegistrationCode" column="household_registration_code"/>
     </resultMap>
-    <select id="findTbuserVOByTbuserId" resultMap="TbuserVO" parameterType="integer">
+
+    <select id="getTbuserVOByTbuserId" resultMap="TbuserVO" parameterType="integer">
            SELECT * FROM
         tbuser tb,teacher te,user_info ui,
-        user_role ur,role ro,state st,address ad,
-        department de, departmental_role dr
-        WHERE tb.`tbuser_id`=ur.`tbuser_id`
-        AND tb.`user_info_id`=ui.`user_info_id`
-        AND te.`user_role_id`=ur.`user_role_id`
+        user_role ur,role ro,state st
+        WHERE ui.`user_info_id`=tb.`user_info_id`
+        AND tb.`tbuser_id`=ur.`tbuser_id`
         AND ur.`role_id`=ro.`role_id`
-        AND ro.`role_id`=dr.`role_id`
-        AND dr.`department_id`=de.`department_id`
-        AND st.`state_id`=te.`state_id`
-        AND ui.`address_id`=ad.`address_id`
+        AND ur.`user_role_id`=te.`user_role_id`
+        AND te.`state_id`=st.`state_id`
         AND tb.`tbuser_id`=#{tbuserId}
 
     </select>
-    <select id="findTbuserVOList" resultMap="TbuserVO">
-         SELECT * FROM
+    <select id="listTbuserVOList" parameterType="String" resultMap="TbuserVO">
+        SELECT * FROM
         tbuser tb,teacher te,user_info ui,
-        user_role ur,role ro,state st,address ad,
-        department de, departmental_role dr
-        WHERE tb.`tbuser_id`=ur.`tbuser_id`
-        AND tb.`user_info_id`=ui.`user_info_id`
-        AND te.`user_role_id`=ur.`user_role_id`
+        user_role ur,role ro,state st
+        WHERE ui.`user_info_id`=tb.`user_info_id`
+        AND tb.`tbuser_id`=ur.`tbuser_id`
         AND ur.`role_id`=ro.`role_id`
-        AND ro.`role_id`=dr.`role_id`
-        AND dr.`department_id`=de.`department_id`
-        AND st.`state_id`=te.`state_id`
-        AND ui.`address_id`=ad.`address_id`
+        AND ur.`user_role_id`=te.`user_role_id`
+        AND te.`state_id`=st.`state_id`
+        <if test="tbname!=null">
+            AND ui.`name`  LIKE '%${tbname}%'
 
+        </if>
+        ORDER BY tb.`tbuser_id` DESC
 
+    </select>
 
+    <select id="listDepartment" resultMap="departmentMap">
+        select * from department
+    </select>
+    <select id="listRole" resultMap="roleMap">
+        select * from role
+    </select>
+    <select id="listState" resultMap="stateMap">
+        select * from state
     </select>
 </mapper>

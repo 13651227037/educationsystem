@@ -2,14 +2,8 @@ package cn.beijing.ssfh.services.public_department.public_managerment.impl;
 
 
 
-import cn.beijing.ssfh.entity.DepartmentalRole;
-import cn.beijing.ssfh.entity.Tbuser;
-import cn.beijing.ssfh.entity.UserInfo;
-import cn.beijing.ssfh.entity.UserRole;
-import cn.beijing.ssfh.mapper.DepartmentalRoleMapper;
-import cn.beijing.ssfh.mapper.TbuserMapper;
-import cn.beijing.ssfh.mapper.UserInfoMapper;
-import cn.beijing.ssfh.mapper.UserRoleMapper;
+import cn.beijing.ssfh.entity.*;
+import cn.beijing.ssfh.mapper.*;
 import cn.beijing.ssfh.pojo.vo.UserLoginVo;
 import cn.beijing.ssfh.services.public_department.public_managerment.Userservice;
 import cn.beijing.ssfh.util.Md5Utils;
@@ -30,8 +24,9 @@ public class UserserviceImpl implements Userservice {
     private TbuserMapper tbuserMapper;
     @Resource
     private UserRoleMapper userRoleMapper;
+
     @Resource
-    private DepartmentalRoleMapper departmentalRoleMapper;
+    private TeacherMapper teacherMapper;
 
 
     @Override
@@ -62,16 +57,17 @@ public class UserserviceImpl implements Userservice {
     * @version V1.0
     */
     @Override
-    public int insterTbuser(Tbuser tbuser, UserInfo userInfo, UserRole userRole, DepartmentalRole departmentalRole) {
+    public int insertTbuser(UserInfo userInfo, Tbuser tbuser, UserRole userRole,  Teacher teacher) {
         Integer number_1 = userInfoMapper.insert(userInfo);
-        System.out.println(userInfo.getUserInfoId());
         tbuser.setPassword(Md5Utils.encryptPassword(tbuser.getPassword()));
         tbuser.setUserInfoId(userInfo.getUserInfoId());
         Integer number_2 = tbuserMapper.insert(tbuser);
         userRole.setTbuserId(tbuser.getTbuserId());
         Integer number_3 = userRoleMapper.insert(userRole);
-        Integer number_4 = departmentalRoleMapper.insert(departmentalRole);
-        return number_1+number_2+number_3+number_4;
+
+        teacher.setUserRoleId(userRole.getUserRoleId());
+        Integer number_5 = teacherMapper.insert(teacher);
+        return number_1+number_2+number_3+number_5;
     }
     /**
     * @Description: 删除用户登陆

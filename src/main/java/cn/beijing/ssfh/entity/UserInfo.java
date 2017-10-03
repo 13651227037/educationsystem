@@ -1,5 +1,7 @@
 package cn.beijing.ssfh.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class UserInfo {
@@ -26,7 +28,7 @@ public class UserInfo {
     private String documentNumber;
 
     private String nation;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
 
     private Integer age;

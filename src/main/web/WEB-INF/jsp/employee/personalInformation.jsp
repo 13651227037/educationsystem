@@ -49,6 +49,8 @@
                 $("#updateUserId").val(result.tbuser.tbuserId);
 
             })
+
+            //点击修改密码
             $("#updatePassword").click(function () {
                 $("#updatePosswordForm").form("clear");
                 $("#passwordAjax").html('');
@@ -67,6 +69,7 @@
                 }else{
                     $("#passwordAjax").html('');
                 }
+                //修改密码
                 $("#updatePosswordForm").form('submit',{
                     url:'${pageContext.request.contextPath}/employeeInfo/updatePasswordByUserId.controller',
                     success:function (result) {
@@ -122,13 +125,7 @@
             <a class="easyui-linkbutton" id="updatePassword">修改密码</a>
         </td>
     </tr>
-    <tr>
-        <td align="right">部门</td>
-        <td >  </td>
-        <td>
-            <input class="easyui-textbox" id="detaildepartmentName"  readonly>
-        </td>
-    </tr>
+
     <tr>
         <td align="right">用户名</td>
         <td >  </td>
