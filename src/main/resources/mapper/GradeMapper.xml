@@ -127,4 +127,8 @@
     where grade_id = #{gradeId,jdbcType=INTEGER}
   </update>
 
+  <select id="listAllGrade" resultMap="BaseResultMap">
+    select * from grade
+  </select>
+
 </mapper>

@@ -2,6 +2,8 @@ package cn.beijing.ssfh.mapper;
 
 import cn.beijing.ssfh.entity.Grade;
 
+import java.util.List;
+
 public interface GradeMapper {
     int deleteByPrimaryKey(Integer gradeId);
 
@@ -14,4 +16,6 @@ public interface GradeMapper {
     int updateByPrimaryKeySelective(Grade record);
 
     int updateByPrimaryKey(Grade record);
+    //查询所有班级信息
+    List<Grade> listAllGrade();
 }

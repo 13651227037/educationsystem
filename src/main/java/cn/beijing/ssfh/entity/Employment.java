@@ -1,12 +1,14 @@
 package cn.beijing.ssfh.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Employment {
     private Integer employmentId;
 
     private Integer studentId;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateEmployment;
 
     private String employmentEnterprise;

@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Title</title>
-    <jsp:include page="${pageContext.request.contextPath}/WEB-INF/jsp/basic/basic.jsp"></jsp:include>
+    <jsp:include page="../basic/basic.jsp"></jsp:include>
     <script type="text/javascript">
         $(function () {
             $("#hobbyDataGride").datagrid({

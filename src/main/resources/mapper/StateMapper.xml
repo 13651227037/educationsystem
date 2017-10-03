@@ -68,5 +68,8 @@
       state_name = #{stateName,jdbcType=VARCHAR}
     where state_id = #{stateId,jdbcType=INTEGER}
   </update>
+  <select id="listAllStudentState" resultMap="BaseResultMap">
+    select * from state where state_id>8
+  </select>
 
 </mapper>

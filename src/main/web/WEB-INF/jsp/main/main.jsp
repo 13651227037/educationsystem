@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>北大青鸟</title>
-    <jsp:include page="${pageContext.request.contextPath}/WEB-INF/jsp/basic/basic.jsp"></jsp:include>
+    <jsp:include page="../basic/basic.jsp"></jsp:include>
 
     <script type="text/javascript">
         $(function () {
@@ -68,8 +68,23 @@
                     </a>
                 </li>
                 <li style="list-style-type:none;">
-                    <a href="#" url="${pageContext.request.contextPath}/tbuserInfo/toupdateTbuserInfo.controller">
+                    <a href="#" url="${pageContext.request.contextPath}/tbuserInfo/toUpdateTbuserInfo.controller">
                         账号安全
+                    </a>
+                </li>
+                <li>
+                    <a href="#" url="${pageContext.request.contextPath}/studentProfile/toStudentProfile.controller">
+                        学生档案
+                    </a>
+                </li>
+                <li>
+                    <a href="#" url="${pageContext.request.contextPath}/studentEmployment/toStudentEmployment.controller">
+                        学生就业
+                    </a>
+                </li>
+                <li>
+                    <a href="#" url="${pageContext.request.contextPath}/studentVisit/toStudentVisit.controller">
+                        学生回访
                     </a>
                 </li>
             </ul>

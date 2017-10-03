@@ -10,7 +10,7 @@ public interface EmploymentMapper {
     int insertSelective(Employment record);
 
     Employment selectByPrimaryKey(Integer employmentId);
-
+    //修改就业信息，也是修改学生就业信息
     int updateByPrimaryKeySelective(Employment record);
 
     int updateByPrimaryKey(Employment record);

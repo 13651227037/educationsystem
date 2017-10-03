@@ -1,5 +1,7 @@
 package cn.beijing.ssfh.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class GraduationStudentVisitRecord {
@@ -8,7 +10,7 @@ public class GraduationStudentVisitRecord {
     private Integer studentId;
 
     private String reviewContent;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date visitTime;
 
     public Integer getGraduationStudentVisitRecordId() {

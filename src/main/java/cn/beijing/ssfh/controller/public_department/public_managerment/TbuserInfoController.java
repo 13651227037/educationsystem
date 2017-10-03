@@ -27,11 +27,11 @@ public class TbuserInfoController {
      * @Date 2017/9/27 11:58
      * @version V1.0
      */
-    @GetMapping(value = "toupdateTbuserInfo")
+    @GetMapping(value = "toUpdateTbuserInfo")
     public String toUpdateTbuser() {
-        return "userinfo/updateuser";
+        return "userInfo/updateuser";
     }
-    @PostMapping(value = "doupdateTbuserInfo",produces = "application/json;charset=utf-8")
+    @PostMapping(value = "doUpdateTbuserInfo",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String doUpdateTbuser(Tbuser tbuser) {
         if(userService.updateTbuser(tbuser)>0){

@@ -1,8 +1,11 @@
 package cn.beijing.ssfh.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class StudentInformation {
+
     private Integer studentId;
 
     private Integer addressId;
@@ -26,7 +29,7 @@ public class StudentInformation {
     private String documentNumber;
 
     private String nation;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
 
     private Integer age;
@@ -34,7 +37,7 @@ public class StudentInformation {
     private String education;
 
     private String profession;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date graduationDate;
 
     private String parentsName;
@@ -231,5 +234,34 @@ public class StudentInformation {
 
     public void setStudentState(Integer studentState) {
         this.studentState = studentState;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentInformation{" +
+                "studentId=" + studentId +
+                ", addressId=" + addressId +
+                ", studentName='" + studentName + '\'' +
+                ", studentNum='" + studentNum + '\'' +
+                ", gender=" + gender +
+                ", nativePlace='" + nativePlace + '\'' +
+                ", homeAddress='" + homeAddress + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", email='" + email + '\'' +
+                ", documentType=" + documentType +
+                ", documentNumber='" + documentNumber + '\'' +
+                ", nation='" + nation + '\'' +
+                ", birthDate=" + birthDate +
+                ", age=" + age +
+                ", education='" + education + '\'' +
+                ", profession='" + profession + '\'' +
+                ", graduationDate=" + graduationDate +
+                ", parentsName='" + parentsName + '\'' +
+                ", parentsTel='" + parentsTel + '\'' +
+                ", emergencyContact='" + emergencyContact + '\'' +
+                ", emergencyContactTel='" + emergencyContactTel + '\'' +
+                ", householdRegistrationCode='" + householdRegistrationCode + '\'' +
+                ", studentState=" + studentState +
+                '}';
     }
 }

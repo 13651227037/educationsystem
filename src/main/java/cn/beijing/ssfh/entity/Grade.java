@@ -1,5 +1,7 @@
 package cn.beijing.ssfh.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Grade {
@@ -14,7 +16,7 @@ public class Grade {
     private Integer gradeSize;
 
     private String gradeCourse;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startTime;
 
     private Integer classroomId;
@@ -80,6 +82,21 @@ public class Grade {
     }
 
     public void setClassroomId(Integer classroomId) {
+
         this.classroomId = classroomId;
+    }
+
+    @Override
+    public String toString() {
+        return "Grade{" +
+                "gradeId=" + gradeId +
+                ", stateId=" + stateId +
+                ", gradeNum='" + gradeNum + '\'' +
+                ", gradeName='" + gradeName + '\'' +
+                ", gradeSize=" + gradeSize +
+                ", gradeCourse='" + gradeCourse + '\'' +
+                ", startTime=" + startTime +
+                ", classroomId=" + classroomId +
+                '}';
     }
 }

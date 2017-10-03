@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>修改密码</title>
-    <jsp:include page="#{pageContext.request.contextPath}/WEB-INF/jsp/basic/basic.jsp"
+    <jsp:include page="../basic/basic.jsp"></jsp:include>
 </head>
 <body>
-
+sd
 </body>
 </html>

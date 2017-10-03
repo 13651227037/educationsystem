@@ -60,4 +60,16 @@ public class Address {
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", addressName='" + addressName + '\'' +
+                ", addressCode='" + addressCode + '\'' +
+                ", addressType='" + addressType + '\'' +
+                ", addressLevel='" + addressLevel + '\'' +
+                ", parentId=" + parentId +
+                '}';
+    }
 }

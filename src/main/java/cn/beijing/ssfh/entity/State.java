@@ -28,6 +28,16 @@ public class State {
     }
 
     public void setStateName(String stateName) {
+
         this.stateName = stateName == null ? null : stateName.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "State{" +
+                "stateId=" + stateId +
+                ", stateType=" + stateType +
+                ", stateName='" + stateName + '\'' +
+                '}';
     }
 }
