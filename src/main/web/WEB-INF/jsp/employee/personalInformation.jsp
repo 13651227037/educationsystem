@@ -28,7 +28,6 @@
                 $("#detailHomeAddress").textbox('setValue',result.userInfo.homeAddress);
                 $("#detailTelephone").textbox('setValue',result.userInfo.telephone);
                 $("#detailEmail").textbox('setValue',result.userInfo.email);
-                $("#detailDocumentType").textbox('setValue',result.userInfo.documentType);
                 $("#detailDocumentNum").textbox('setValue',result.userInfo.documentNumber);
                 $("#detailNation").textbox('setValue',result.userInfo.nation);
                 $("#detailBirthDate").textbox('setValue',result.userInfo.birthDate);
@@ -94,7 +93,7 @@
             <tr>
                 <td align="right">密码</td>
                 <td>
-                    <input type="password" class="easyui-textbox" id="password1" data-options="required:true,validType:['length[1,5]']" />
+                    <input type="password" missingMessage="请输入密码" class="easyui-textbox" id="password1" data-options="required:true,validType:['length[1,5]']" />
                     <input type="hidden" name="tbuserId" id="updateUserId"/>
 
                 </td>
@@ -102,7 +101,7 @@
             <tr>
                 <td align="right">确认密码</td>
                 <td>
-                    <input type="password" class="easyui-textbox" id="password2" name="password" data-options="required:true,validType:['length[1,5]']"/>
+                    <input type="password" missingMessage="请重新输入密码" class="easyui-textbox" id="password2" name="password" data-options="required:true,validType:['length[1,5]']"/>
                 </td>
                 <td align="left" id="passwordAjax"></td>
             </tr>
@@ -221,7 +220,8 @@
         <td align="right">证件类型</td>
         <td >  </td>
         <td>
-            <input class="easyui-textbox" id="detailDocumentType" name="userInfo.documentType" readonly>
+            <input checked type="radio"  name="documentType" id="detailDocumentType" value="1" > 身份证
+
         </td>
     </tr>
     <tr>

@@ -143,7 +143,12 @@
             })
             //修改用户老师的保存按钮
             $("#updateSaveTbuserInfoButton").click(function () {
-
+                var roleId = $("#updateUserRoleName").combobox('getValue');
+                var stateId = $("#updateStateName").combobox('getValue');
+                if(roleId==-1||stateId==-1) {
+                    alert("请选择职务和状态!");
+                    return;
+                }
                 $("#updateUserInfoName2").textbox('setValue',$("#updateUserInfoName1").textbox('getValue'));
                 $("#updateEmployeeVOForm").form('submit', {
                     url: '${pageContext.request.contextPath}/employeeInfo/updateTbuserInfoVo.controller',
@@ -175,7 +180,6 @@
                     $("#detailHomeAddress").textbox('setValue', result.userInfo.homeAddress);
                     $("#detailTelephone").textbox('setValue', result.userInfo.telephone);
                     $("#detailEmail").textbox('setValue', result.userInfo.email);
-                    $("#detailDocumentType").textbox('setValue', result.userInfo.documentType);
                     $("#detailDocumentNum").textbox('setValue', result.userInfo.documentNumber);
                     $("#detailNation").textbox('setValue', result.userInfo.nation);
                     $("#detailBirthDate").textbox('setValue', result.userInfo.birthDate);
@@ -324,7 +328,7 @@
             <tr>
                 <td>证件类型：</td>
                 <td>
-                    <input class="easyui-textbox" id="detailDocumentType" name="userInfo.documentType" readonly>
+                    <input checked type="radio"  name="documentType" id="detailDocumentType" value="1" > 身份证
                 </td>
             </tr>
             <tr>
@@ -674,7 +678,6 @@
                 <td></td>
                 <td>
                     <input checked type="radio"  name="documentType" id="updateDocumentType" value="1" > 身份证
-
                 </td>
             </tr>
             <tr>
