@@ -20,8 +20,9 @@ public class TestDao {
         private CourseTablesMapper courseTablesMapper;
         @Test
         public void testselect() {
-            System.out.println(courseTablesMapper.selectByPrimaryKey(1));
+            System.out.println(courseTablesMapper.selectByPrimaryKey(89));
         }
+
 
     @Test
     public void testSelectCourseAll() {
