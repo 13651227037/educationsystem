@@ -1,7 +1,7 @@
 package cn.beijing.ssfh.controller;
 
-import cn.beijing.ssfh.pojo.vo.CourseTableVO;
 import cn.beijing.ssfh.services.CourseTableVOService;
+import cn.beijing.ssfh.util.RecordResult;
 import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +24,7 @@ public class CourseTablesController {
             produces = "application/json;charset=utf-8")
     @ResponseBody
     public String selectCourseTableAll() {
-        List<CourseTableVO> list = courseTableVOService.selectCourse();
-        return JSON.toJSONString(list);
+        List<RecordResult> list = courseTableVOService.selectCourse();
+        return JSON.toJSONStringWithDateFormat(list,"yyyy-MM-dd");
     }
 }

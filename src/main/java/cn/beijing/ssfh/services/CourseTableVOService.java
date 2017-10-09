@@ -2,6 +2,7 @@ package cn.beijing.ssfh.services;
 
 import cn.beijing.ssfh.entity.CourseTables;
 import cn.beijing.ssfh.pojo.vo.CourseTableVO;
+import cn.beijing.ssfh.util.RecordResult;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface CourseTableVOService {
 
     List<CourseTableVO> selectByPrimaryKey(Integer courseTablesId);
 
-    List<CourseTableVO> selectCourse();
+    List<RecordResult> selectCourse();
 
     int updateByPrimaryKeySelective(CourseTables record);
 

@@ -12,7 +12,8 @@ import java.util.Date;
 public class CourseTableVO {
     private int courseTablesId;//排课Id
     private int timeRange;//时间范围
-    private int dateTimeId;//日期
+    private int dateTimeId;//日期id
+    private Date dateTime;//日期
     private String gradeName;//班级名称
     private int gradeNum;//班级人数
     private String gradeCourse;//班级专业
@@ -20,10 +21,12 @@ public class CourseTableVO {
     private String gradeState;//班级状态
     private String SteacherName; //老师名字
     private String teacherMajor ;//所教专业
-    private String clsssroomName;//班级名称
+    private String clsssroomName;//教室名称
     private String classroomUse;//教室用途int
     private int dayTimeid;//时间段id
     private String weekName;//周时间
+    private String chapterName;//课程名称
+
 
 
     public CourseTableVO() {
@@ -35,6 +38,7 @@ public class CourseTableVO {
                 "courseTablesId=" + courseTablesId +
                 ", timeRange=" + timeRange +
                 ", dateTimeId=" + dateTimeId +
+                ", dateTime=" + dateTime +
                 ", gradeName='" + gradeName + '\'' +
                 ", gradeNum=" + gradeNum +
                 ", gradeCourse='" + gradeCourse + '\'' +
@@ -46,7 +50,27 @@ public class CourseTableVO {
                 ", classroomUse='" + classroomUse + '\'' +
                 ", dayTimeid=" + dayTimeid +
                 ", weekName='" + weekName + '\'' +
-                '}';
+                ", chapterName='" + chapterName + '\'' +
+                ", classroomName='" +
+                '}'+"\n";
+    }
+
+
+
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public String getChapterName() {
+        return chapterName;
+    }
+
+    public void setChapterName(String chapterName) {
+        this.chapterName = chapterName;
     }
 
     public Date getStartTime() {

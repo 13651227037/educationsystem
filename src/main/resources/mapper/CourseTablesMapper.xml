@@ -6,6 +6,7 @@
     <result property="clsssroomName" column="classroom_name"></result>
     <result property="classroomUse" column="classroom_use"></result>
     <result property="dateTimeId" column="date_time_id"></result>
+    <result property="dateTime" column="date_time"></result>
     <result property="gradeCourse" column="grade_course"></result>
     <result property="gradeName" column="grade_name"></result>
     <result property="gradeNum" column="grade_num"></result>
@@ -15,14 +16,15 @@
     <result property="timeRange" column="time_range"></result>
     <result property="dayTimeid" column="day_time_id"></result>
     <result property="weekName" column="week_name"></result>
+    <result property="chapterName" column="chapter_name"></result>
   </resultMap>
   <sql id="Base_Column_List" >
-   week.week_name,day_time.day_time_id,time_range,course_tables_id,time_range,date_time.date_time_id,grade_name,grade_num,grade_course,start_time,teacher_name,teacher_major,classroom_name,classroom_use
+  date_time,chapter_name,weeks.week_name,day_time.day_time_id,time_range,course_tables_id,time_range,date_time.date_time_id,grade_name,grade_num,grade_course,start_time,teacher.teacher_name,teacher_major,classroom_name,classroom_use
   </sql>
   <select id="selectByPrimaryKey" resultMap="CourseTablesVOMap" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List"></include>
-    from course_tables,day_time,date_time,grade,class_room,grade_teacher,teacher,week,grade_sircle
+    from course_tables,day_time,date_time,grade,class_room,grade_teacher,teacher,weeks,grade_sircle
     where course_tables.grade_id = grade.grade_id
     and course_tables.classroom_id = class_room.classroom_id
     AND course_tables.date_time_id = date_time.date_time_id
@@ -31,14 +33,14 @@
     AND teacher.teacher_id = grade_teacher.teacher_id
 
     AND grade.grade_id = grade_sircle.grade_id
-    AND week.week_id = grade_sircle.week_id
+    AND weeks.week_id = grade_sircle.week_id
 
     AND course_tables_id = #{courseTablesId,jdbcType=INTEGER}
   </select>
   <select id="selectCourse" resultMap="CourseTablesVOMap"  >
     select
     <include refid="Base_Column_List"></include>
-    from course_tables,day_time,date_time,grade,class_room,grade_teacher,teacher,week,grade_sircle
+    from course_tables,day_time,date_time,grade,class_room,grade_teacher,teacher,weeks,grade_sircle
     where course_tables.grade_id = grade.grade_id
     and course_tables.classroom_id = class_room.classroom_id
     AND course_tables.date_time_id = date_time.date_time_id
@@ -46,7 +48,8 @@
     AND grade.grade_id = grade_teacher.grade_id
     AND teacher.teacher_id = grade_teacher.teacher_id
     AND grade.grade_id = grade_sircle.grade_id
-    AND week.week_id = grade_sircle.week_id
+    AND weeks.week_id = grade_sircle.week_id
+    ORDER BY date_time_id,weeks.week_id,class_room.classroom_id,day_time_id ASC
 
   </select>
 

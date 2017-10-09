@@ -90,4 +90,10 @@
       classroom_use = #{classroomUse,jdbcType=VARCHAR}
     where classroom_id = #{classroomId,jdbcType=INTEGER}
   </update>
+  <select id="selectClassRoomIdAll" resultType="List">
+    select
+    classroom_id
+    from class_room
+
+  </select>
 </mapper>
